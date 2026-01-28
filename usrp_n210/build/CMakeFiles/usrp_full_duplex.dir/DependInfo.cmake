@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/risc/ram/USRP/usrp_n210/apps/usrp_full_duplex.cpp" "CMakeFiles/usrp_full_duplex.dir/apps/usrp_full_duplex.cpp.o" "gcc" "CMakeFiles/usrp_full_duplex.dir/apps/usrp_full_duplex.cpp.o.d"
+  "/home/risc/ram/USRP/usrp_software/usrp_n210/apps/usrp_full_duplex.cpp" "CMakeFiles/usrp_full_duplex.dir/apps/usrp_full_duplex.cpp.o" "gcc" "CMakeFiles/usrp_full_duplex.dir/apps/usrp_full_duplex.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/risc/ram/USRP/usrp_n210/build/CMakeFiles/usrp_core.dir/DependInfo.cmake"
+  "/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles/usrp_core.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

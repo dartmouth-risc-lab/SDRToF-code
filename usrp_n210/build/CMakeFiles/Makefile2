@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/risc/ram/USRP/usrp_n210
+CMAKE_SOURCE_DIR = /home/risc/ram/USRP/usrp_software/usrp_n210
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/risc/ram/USRP/usrp_n210/build
+CMAKE_BINARY_DIR = /home/risc/ram/USRP/usrp_software/usrp_n210/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -83,14 +83,14 @@ clean: CMakeFiles/usrp_full_duplex.dir/clean
 CMakeFiles/usrp_core.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_core.dir/build.make CMakeFiles/usrp_core.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_core.dir/build.make CMakeFiles/usrp_core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/risc/ram/USRP/usrp_n210/build/CMakeFiles --progress-num=1,2,3,4 "Built target usrp_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles --progress-num=1,2,3,4 "Built target usrp_core"
 .PHONY : CMakeFiles/usrp_core.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/usrp_core.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_n210/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/usrp_core.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_n210/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles 0
 .PHONY : CMakeFiles/usrp_core.dir/rule
 
 # Convenience name for target.
@@ -109,14 +109,14 @@ CMakeFiles/usrp_core.dir/clean:
 CMakeFiles/usrp_full_duplex.dir/all: CMakeFiles/usrp_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex.dir/build.make CMakeFiles/usrp_full_duplex.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex.dir/build.make CMakeFiles/usrp_full_duplex.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/risc/ram/USRP/usrp_n210/build/CMakeFiles --progress-num=5,6 "Built target usrp_full_duplex"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles --progress-num=5,6 "Built target usrp_full_duplex"
 .PHONY : CMakeFiles/usrp_full_duplex.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/usrp_full_duplex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_n210/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/usrp_full_duplex.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_n210/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles 0
 .PHONY : CMakeFiles/usrp_full_duplex.dir/rule
 
 # Convenience name for target.

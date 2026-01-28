@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/risc/ram/USRP/usrp_n210
+CMAKE_SOURCE_DIR = /home/risc/ram/USRP/usrp_software/usrp_n210
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/risc/ram/USRP/usrp_n210/build
+CMAKE_BINARY_DIR = /home/risc/ram/USRP/usrp_software/usrp_n210/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/usrp_core.dir/depend.make
@@ -72,44 +72,44 @@ include CMakeFiles/usrp_core.dir/flags.make
 CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o: CMakeFiles/usrp_core.dir/flags.make
 CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o: ../src/usrp/device.cpp
 CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o: CMakeFiles/usrp_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/risc/ram/USRP/usrp_n210/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o -MF CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o.d -o CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o -c /home/risc/ram/USRP/usrp_n210/src/usrp/device.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o -MF CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o.d -o CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/device.cpp
 
 CMakeFiles/usrp_core.dir/src/usrp/device.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/usrp_core.dir/src/usrp/device.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/risc/ram/USRP/usrp_n210/src/usrp/device.cpp > CMakeFiles/usrp_core.dir/src/usrp/device.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/device.cpp > CMakeFiles/usrp_core.dir/src/usrp/device.cpp.i
 
 CMakeFiles/usrp_core.dir/src/usrp/device.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/usrp_core.dir/src/usrp/device.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/risc/ram/USRP/usrp_n210/src/usrp/device.cpp -o CMakeFiles/usrp_core.dir/src/usrp/device.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/device.cpp -o CMakeFiles/usrp_core.dir/src/usrp/device.cpp.s
 
 CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o: CMakeFiles/usrp_core.dir/flags.make
 CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o: ../src/usrp/rx_stream.cpp
 CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o: CMakeFiles/usrp_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/risc/ram/USRP/usrp_n210/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o -MF CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o.d -o CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o -c /home/risc/ram/USRP/usrp_n210/src/usrp/rx_stream.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o -MF CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o.d -o CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/rx_stream.cpp
 
 CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/risc/ram/USRP/usrp_n210/src/usrp/rx_stream.cpp > CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/rx_stream.cpp > CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.i
 
 CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/risc/ram/USRP/usrp_n210/src/usrp/rx_stream.cpp -o CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/rx_stream.cpp -o CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.s
 
 CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: CMakeFiles/usrp_core.dir/flags.make
 CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: ../src/usrp/tx_stream.cpp
 CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: CMakeFiles/usrp_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/risc/ram/USRP/usrp_n210/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o -MF CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o.d -o CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o -c /home/risc/ram/USRP/usrp_n210/src/usrp/tx_stream.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o -MF CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o.d -o CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/tx_stream.cpp
 
 CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/risc/ram/USRP/usrp_n210/src/usrp/tx_stream.cpp > CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/tx_stream.cpp > CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.i
 
 CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/risc/ram/USRP/usrp_n210/src/usrp/tx_stream.cpp -o CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/tx_stream.cpp -o CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.s
 
 # Object files for target usrp_core
 usrp_core_OBJECTS = \
@@ -125,7 +125,7 @@ libusrp_core.a: CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o
 libusrp_core.a: CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o
 libusrp_core.a: CMakeFiles/usrp_core.dir/build.make
 libusrp_core.a: CMakeFiles/usrp_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/risc/ram/USRP/usrp_n210/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libusrp_core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libusrp_core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/usrp_core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/usrp_core.dir/link.txt --verbose=$(VERBOSE)
 
@@ -138,6 +138,6 @@ CMakeFiles/usrp_core.dir/clean:
 .PHONY : CMakeFiles/usrp_core.dir/clean
 
 CMakeFiles/usrp_core.dir/depend:
-	cd /home/risc/ram/USRP/usrp_n210/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/risc/ram/USRP/usrp_n210 /home/risc/ram/USRP/usrp_n210 /home/risc/ram/USRP/usrp_n210/build /home/risc/ram/USRP/usrp_n210/build /home/risc/ram/USRP/usrp_n210/build/CMakeFiles/usrp_core.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/risc/ram/USRP/usrp_software/usrp_n210/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/risc/ram/USRP/usrp_software/usrp_n210 /home/risc/ram/USRP/usrp_software/usrp_n210 /home/risc/ram/USRP/usrp_software/usrp_n210/build /home/risc/ram/USRP/usrp_software/usrp_n210/build /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles/usrp_core.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/usrp_core.dir/depend
 

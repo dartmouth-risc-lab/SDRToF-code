@@ -1,7 +1,7 @@
 CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o: \
- /home/risc/ram/USRP/usrp_n210/src/usrp/device.cpp \
+ /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/device.cpp \
  /usr/include/stdc-predef.h \
- /home/risc/ram/USRP/usrp_n210/include/usrp/device.hpp \
+ /home/risc/ram/USRP/usrp_software/usrp_n210/include/usrp/device.hpp \
  /usr/local/include/uhd/usrp/multi_usrp.hpp \
  /usr/local/include/uhd/config.hpp /usr/include/boost/config.hpp \
  /usr/include/boost/config/user.hpp \

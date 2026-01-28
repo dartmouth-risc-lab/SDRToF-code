@@ -1,8 +1,8 @@
 CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o: \
- /home/risc/ram/USRP/usrp_n210/src/usrp/rx_stream.cpp \
+ /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/rx_stream.cpp \
  /usr/include/stdc-predef.h \
- /home/risc/ram/USRP/usrp_n210/include/usrp/rx_stream.hpp \
- /home/risc/ram/USRP/usrp_n210/include/usrp/device.hpp \
+ /home/risc/ram/USRP/usrp_software/usrp_n210/include/usrp/rx_stream.hpp \
+ /home/risc/ram/USRP/usrp_software/usrp_n210/include/usrp/device.hpp \
  /usr/local/include/uhd/usrp/multi_usrp.hpp \
  /usr/local/include/uhd/config.hpp /usr/include/boost/config.hpp \
  /usr/include/boost/config/user.hpp \
@@ -1421,8 +1421,8 @@ CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o: \
  /usr/include/boost/thread/shared_mutex.hpp \
  /usr/include/boost/thread/pthread/shared_mutex.hpp \
  /usr/local/include/uhd/usrp/subdev_spec.hpp \
- /home/risc/ram/USRP/usrp_n210/include/usrp/types.hpp \
- /home/risc/ram/USRP/usrp_n210/include/util/bounded_queue.hpp \
+ /home/risc/ram/USRP/usrp_software/usrp_n210/include/usrp/types.hpp \
+ /home/risc/ram/USRP/usrp_software/usrp_n210/include/util/bounded_queue.hpp \
  /usr/include/c++/11/condition_variable /usr/include/c++/11/atomic \
  /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \

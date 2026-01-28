@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/risc/ram/USRP/usrp_n210/include
+CXX_INCLUDES = -I/home/risc/ram/USRP/usrp_software/usrp_n210/include
 
 CXX_FLAGS = -std=gnu++17
 

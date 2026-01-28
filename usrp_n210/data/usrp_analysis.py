@@ -7,16 +7,16 @@ import matplotlib.pyplot as plt
 # Files (USRP capture)
 # -----------------------
 # Set this to your loopback_full_duplex output directory
-dir = "/home/risc/ram/USRP/usrp_n210/data/usrp_runs/"  # change as needed
+dir = "/home/risc/ram/USRP/usrp_software/usrp_n210/data/usrp_runs/"  # change as needed
 
-iq_file   = os.path.join(dir, "rx_iq_sc16_1msps.bin")
-meta_csv  = os.path.join(dir, "rx_meta_1msps.csv")
+iq_file   = os.path.join(dir, "rx_iq_sc16_5msps.bin")
+meta_csv  = os.path.join(dir, "rx_meta_5msps.csv")
 
 fs = 1.0e6  # Hz (RX sample rate)
 # -----------------------
 # Analysis settings
 # -----------------------
-seconds_to_plot = 1.     # time-domain plot window (seconds)
+seconds_to_plot = 35.     # time-domain plot window (seconds)
 skip_seconds    = 1.01     # skip initial transient (seconds)
 max_samples     = None     # limit complex samples after conversion
 
@@ -33,7 +33,7 @@ plotIQ_time       = False
 plotDDC_IQ        = False
 plot_phase        = True
 
-avg_N = 2000
+avg_N = 2500
 
 # -----------------------
 # Load metadata (CSV from UHD)
@@ -151,22 +151,22 @@ y = x * lo
 if remove_dc_after_ddc:
     y = y - np.mean(y)
 
-# -----------------------
-# Simple sample averaging (your exact Lime structure)
-# -----------------------
-avg_N = int(avg_N)
-if avg_N < 1:
-    avg_N = 1
+# # -----------------------
+# # Simple sample averaging (your exact Lime structure)
+# # -----------------------
+# avg_N = int(avg_N)
+# if avg_N < 1:
+#     avg_N = 1
 
-L = (len(y) // avg_N) * avg_N
-y2 = y[:L]
-y_avg = y2.reshape(-1, avg_N).mean(axis=1)
-fs_avg = fs / avg_N
+# L = (len(y) // avg_N) * avg_N
+# y2 = y[:L]
+# y_avg = y2.reshape(-1, avg_N).mean(axis=1)
+# fs_avg = fs / avg_N
 
-phi_avg = np.unwrap(np.angle(y_avg))
-M_ = int(seconds_to_plot * fs_avg)
-M_ = min(M_, len(phi_avg))
-t_avg = np.arange(M_) / fs_avg
+# phi_avg = np.unwrap(np.angle(y_avg))
+# M_ = int(seconds_to_plot * fs_avg)
+# M_ = min(M_, len(phi_avg))
+# t_avg = np.arange(M_) / fs_avg
 
 # For reporting “raw DDC phase” 
 phi_ddc = np.angle(y[:M])
@@ -175,7 +175,7 @@ phi_std  = float(np.std(phi_ddc))
 
 if plot_phase:
     plt.figure(figsize=(6, 4))
-    plt.plot(t_avg[:M_] * 1e3, phi_avg[:M_], label="Averaged phase", linewidth=1.0)
+    plt.plot(t[:][::avg_N] * 1e3, phi_ddc[:][::avg_N], label="Averaged phase", linewidth=1.0)
     plt.xlabel("Time (ms)")
     plt.ylabel("Phase (rad)")
     plt.title("USRP Phase after DDC (expect ~constant + noise)")

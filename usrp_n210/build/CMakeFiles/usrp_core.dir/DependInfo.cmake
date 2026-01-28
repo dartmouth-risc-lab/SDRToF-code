@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/risc/ram/USRP/usrp_n210/src/usrp/device.cpp" "CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o" "gcc" "CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o.d"
-  "/home/risc/ram/USRP/usrp_n210/src/usrp/rx_stream.cpp" "CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o" "gcc" "CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o.d"
-  "/home/risc/ram/USRP/usrp_n210/src/usrp/tx_stream.cpp" "CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o" "gcc" "CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o.d"
+  "/home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/device.cpp" "CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o" "gcc" "CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o.d"
+  "/home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/rx_stream.cpp" "CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o" "gcc" "CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o.d"
+  "/home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/tx_stream.cpp" "CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o" "gcc" "CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o.d"
   )
 
 # Targets to which this target links.

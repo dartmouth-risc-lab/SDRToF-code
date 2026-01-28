@@ -37,11 +37,11 @@ int main() {
         const double Fs = 1e6;     // sample rate (try 1e6, 5e6, 10e6)
         const double Fc = 100e6;    // RF LO
         const double fb = 100e3;    // TX baseband tone
-        const double tx_seconds = 10.0;
+        const double tx_seconds = 45.0;
         const double rx_seconds = tx_seconds + 0.5;
 
         // Output base directory
-        const std::filesystem::path out_dir = "/home/risc/ram/USRP/usrp_n210/data/usrp_runs/";
+        const std::filesystem::path out_dir = "/home/risc/ram/USRP/usrp_software/usrp_n210/data/usrp_runs/";
         const std::string tag = "loopback"; // any label you want in filenames
         // --------------------------------------------------------------------
 
@@ -54,9 +54,21 @@ int main() {
         std::filesystem::create_directories(run_dir, ec);
         if (ec) throw std::runtime_error("Failed to create output dir: " + run_dir.string());
 
-        // Output paths
-        const std::string iq_path   = (out_dir / "rx_iq_sc16_1msps.bin").string(); // use run_dir for unique dirs
-        const std::string meta_path = (out_dir / "rx_meta_1msps.csv").string();
+        const double Fs_msps = Fs / 1e6;
+        std::ostringstream fs_tag;
+
+        fs_tag << std::fixed << std::setprecision(
+            (Fs_msps == std::floor(Fs_msps)) ? 0 : 1
+         )
+       << Fs_msps << "msps";
+        
+       // output paths
+        const std::string iq_path =
+            (out_dir / ("rx_iq_sc16_" + fs_tag.str() + ".bin")).string();
+
+        const std::string meta_path =
+            (out_dir / ("rx_meta_" + fs_tag.str() + ".csv")).string();
+
 
         // ---------------- Device config ----------------
         usrp::DeviceConfig dcfg;
