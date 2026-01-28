@@ -1,0 +1,2 @@
+/usr/bin/ar qc libusrp_core.a CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o
+/usr/bin/ranlib libusrp_core.a
