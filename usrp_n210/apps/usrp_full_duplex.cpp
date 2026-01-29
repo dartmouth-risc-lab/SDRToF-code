@@ -34,15 +34,15 @@ static std::string timestamp_utc_like() {
 int main() {
     try {
         // -------------------- Run parameters (edit here) --------------------
-        const double Fs = 1e6;     // sample rate (try 1e6, 5e6, 10e6)
-        const double Fc = 100e6;    // RF LO
+        const double Fs = 2e6;     // sample rate (try 1e6, 5e6, 10e6)
+        const double Fc = 900e6;    // RF LO
         const double fb = 100e3;    // TX baseband tone
-        const double tx_seconds = 45.0;
+        const double tx_seconds = 10.0;
         const double rx_seconds = tx_seconds + 0.5;
 
         // Output base directory
         const std::filesystem::path out_dir = "/home/risc/ram/USRP/usrp_software/usrp_n210/data/usrp_runs/";
-        const std::string tag = "loopback"; // any label you want in filenames
+        const std::string tag = "mary_lamb_indirect1"; // any label you want in filenames
         // --------------------------------------------------------------------
 
         // Create unique run directory
@@ -60,7 +60,7 @@ int main() {
         fs_tag << std::fixed << std::setprecision(
             (Fs_msps == std::floor(Fs_msps)) ? 0 : 1
          )
-       << Fs_msps << "msps";
+       << Fs_msps << "msps" << "_" << tag;
         
        // output paths
         const std::string iq_path =
@@ -86,13 +86,13 @@ int main() {
         // TX (RF1)
         dcfg.tx.rate_sps = Fs;
         dcfg.tx.freq_hz  = Fc;
-        dcfg.tx.gain_db  = 5.0;
+        dcfg.tx.gain_db  = 6.0;
         dcfg.tx.ant      = "TX/RX";
 
         // RX (RF2)
         dcfg.rx.rate_sps = Fs;
         dcfg.rx.freq_hz  = Fc;
-        dcfg.rx.gain_db  = 15.0;
+        dcfg.rx.gain_db  = 10.0;
         dcfg.rx.ant      = "RX2";
 
         usrp::Device dev(dcfg);

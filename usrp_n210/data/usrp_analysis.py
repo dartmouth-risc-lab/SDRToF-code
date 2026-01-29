@@ -9,15 +9,15 @@ import matplotlib.pyplot as plt
 # Set this to your loopback_full_duplex output directory
 dir = "/home/risc/ram/USRP/usrp_software/usrp_n210/data/usrp_runs/"  # change as needed
 
-iq_file   = os.path.join(dir, "rx_iq_sc16_5msps.bin")
-meta_csv  = os.path.join(dir, "rx_meta_5msps.csv")
+iq_file   = os.path.join(dir, "rx_iq_sc16_2msps.bin")
+meta_csv  = os.path.join(dir, "rx_meta_2msps.csv")
 
-fs = 1.0e6  # Hz (RX sample rate)
+fs = 2.0e6  # Hz (RX sample rate)
 # -----------------------
 # Analysis settings
 # -----------------------
-seconds_to_plot = 35.     # time-domain plot window (seconds)
-skip_seconds    = 1.01     # skip initial transient (seconds)
+seconds_to_plot = 6.     # time-domain plot window (seconds)
+skip_seconds    = 3.01     # skip initial transient (seconds)
 max_samples     = None     # limit complex samples after conversion
 
 # DDC settings
@@ -120,8 +120,8 @@ t = np.arange(M) / fs
 
 if plotIQ_time:
     plt.figure(figsize=(6, 4))
-    plt.plot(t * 1e3, np.real(x[:M]), label="I (real)", linewidth=1.0)
-    plt.plot(t * 1e3, np.imag(x[:M]), label="Q (imag)", linewidth=1.0)
+    plt.plot(t[::1] * 1e3, np.real(x[:M][::1]), label="I (real)", linewidth=1.0)
+    plt.plot(t[::1] * 1e3, np.imag(x[:M][::1]), label="Q (imag)", linewidth=1.0)
     plt.xlabel("Time (ms)")
     plt.ylabel("Amplitude (norm)")
     plt.title("USRP Raw RX IQ")
@@ -173,6 +173,7 @@ phi_ddc = np.angle(y[:M])
 phi_mean = float(np.mean(phi_ddc))
 phi_std  = float(np.std(phi_ddc))
 
+print(f"DDC phase over first {M} samples: mean={phi_mean:.4f} rad, std={phi_std:.4f} rad")
 if plot_phase:
     plt.figure(figsize=(6, 4))
     plt.plot(t[:][::avg_N] * 1e3, phi_ddc[:][::avg_N], label="Averaged phase", linewidth=1.0)
