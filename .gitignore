@@ -1,2 +1,7 @@
 *.bin
 *.csv
+
+# generated / captured data
+usrp_n210/data/
+usrp_n210/data/usrp_runs/
+*.bin
