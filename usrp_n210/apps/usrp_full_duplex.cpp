@@ -34,15 +34,15 @@ static std::string timestamp_utc_like() {
 int main() {
     try {
         // -------------------- Run parameters (edit here) --------------------
-        const double Fs = 2e6;     // sample rate (try 1e6, 5e6, 10e6)
+        const double Fs = 10e6;     // sample rate (try 1e6, 5e6, 10e6)
         const double Fc = 900e6;    // RF LO
         const double fb = 100e3;    // TX baseband tone
-        const double tx_seconds = 10.0;
+        const double tx_seconds = 10;
         const double rx_seconds = tx_seconds + 0.5;
 
         // Output base directory
-        const std::filesystem::path out_dir = "/home/risc/ram/USRP/usrp_software/usrp_n210/data/usrp_runs/";
-        const std::string tag = "mary_lamb_indirect1"; // any label you want in filenames
+        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Feb4/audio/";
+        const std::string tag = "optical_mary_direct1"; // any label you want in filenames
         // --------------------------------------------------------------------
 
         // Create unique run directory
@@ -61,14 +61,17 @@ int main() {
             (Fs_msps == std::floor(Fs_msps)) ? 0 : 1
          )
        << Fs_msps << "msps" << "_" << tag;
-        
+
+       std::ostringstream duration_tag;
+       duration_tag << std::fixed << std::setprecision(1) << static_cast<int>(tx_seconds) << "s";
+        // std::ostringstream duration_tag;
+        // duration_tag << static_cast<int>(tx_seconds) << "s";
        // output paths
         const std::string iq_path =
-            (out_dir / ("rx_iq_sc16_" + fs_tag.str() + ".bin")).string();
+            (out_dir / ("rx_iq_sc16_" + fs_tag.str() + "_" + duration_tag.str() + ".bin")).string();
 
         const std::string meta_path =
-            (out_dir / ("rx_meta_" + fs_tag.str() + ".csv")).string();
-
+            (out_dir / ("rx_meta_" + fs_tag.str() + "_" + duration_tag.str() + ".csv")).string();
 
         // ---------------- Device config ----------------
         usrp::DeviceConfig dcfg;
@@ -86,14 +89,16 @@ int main() {
         // TX (RF1)
         dcfg.tx.rate_sps = Fs;
         dcfg.tx.freq_hz  = Fc;
-        dcfg.tx.gain_db  = 6.0;
+        dcfg.tx.gain_db  = 38.0; // 28 was good for retroreflective // 38 for direct speaker
         dcfg.tx.ant      = "TX/RX";
 
         // RX (RF2)
         dcfg.rx.rate_sps = Fs;
         dcfg.rx.freq_hz  = Fc;
-        dcfg.rx.gain_db  = 10.0;
+        dcfg.rx.gain_db  = 10.0; // 10 db for optical
         dcfg.rx.ant      = "RX2";
+        dcfg.rx.enable_dc_offset = true;   // UHD auto DC offset correction
+        dcfg.rx.enable_iq_balance = true;  // UHD auto IQ balance correction
 
         usrp::Device dev(dcfg);
         std::cout << dev.pp_string() << "\n";
@@ -117,6 +122,9 @@ int main() {
         rcfg.write_full_metadata = false;                 // error-only rows
         rcfg.iq_file_buffer_bytes = 8 * 1024 * 1024;      // 8MB
         rcfg.meta_file_buffer_bytes = 1 * 1024 * 1024;    // 1MB
+
+        // Front-end cleanup (helps settling; adjust as needed)
+        rcfg.discard_samps = static_cast<size_t>(0.02 * Fs);  // 20 ms settling
 
         rcfg.iq_path   = iq_path;
         rcfg.meta_path = meta_path;

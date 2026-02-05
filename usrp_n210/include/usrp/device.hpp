@@ -15,6 +15,8 @@ struct ChannelConfig {
     double gain_db  = 0.0;
     std::string ant = "";      // e.g. "RX2" or "TX/RX" (optional; depends on dboard)
     double bw_hz    = 0.0;     // 0 = leave default
+    bool enable_iq_balance = true;  // enable UHD automatic IQ balance (RX only)
+    bool enable_dc_offset  = true;  // enable UHD automatic DC offset (RX only)
 };
 
 struct DeviceConfig {

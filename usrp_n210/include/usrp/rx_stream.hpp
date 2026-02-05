@@ -74,6 +74,10 @@ struct RxCaptureConfig {
     // Stream/file buffering
     size_t iq_file_buffer_bytes   = 8 * 1024 * 1024;  // 8 MB
     size_t meta_file_buffer_bytes = 1 * 1024 * 1024;  // 1 MB
+
+    // Optional front-end cleanup
+    // Discard initial samples to allow analog chain to settle
+    size_t discard_samps = 0;
 };
 
 class RxCapture {

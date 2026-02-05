@@ -69,6 +69,10 @@ void Device::apply_rx_config() {
 
         if (!cfg_.rx.ant.empty()) usrp_->set_rx_antenna(cfg_.rx.ant, ch);
         if (cfg_.rx.bw_hz > 0.0) usrp_->set_rx_bandwidth(cfg_.rx.bw_hz, ch);
+
+        // Standard UHD front-end corrections
+        usrp_->set_rx_dc_offset(cfg_.rx.enable_dc_offset, ch);
+        usrp_->set_rx_iq_balance(cfg_.rx.enable_iq_balance, ch);
     }
 }
 
@@ -92,6 +96,8 @@ std::string Device::pp_string() const {
        << " Hz, freq=" << cfg_.rx.freq_hz
        << " Hz, gain=" << cfg_.rx.gain_db
        << " dB, ant=" << (cfg_.rx.ant.empty() ? "(default)" : cfg_.rx.ant)
+       << " dc_offset=" << (cfg_.rx.enable_dc_offset ? "auto" : "off")
+       << " iq_balance=" << (cfg_.rx.enable_iq_balance ? "auto" : "off")
        << "\n";
 
     // UHD’s own pretty printer (often helpful)

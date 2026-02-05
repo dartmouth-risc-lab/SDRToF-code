@@ -3,6 +3,7 @@
 #include <uhd/stream.hpp>
 #include <uhd/types/stream_cmd.hpp>
 
+
 #include <chrono>
 #include <fstream>
 #include <iostream>
@@ -168,16 +169,28 @@ void RxCapture::writer_thread_fn_() {
     // Metadata: either error-only rows (default) or one row per block.
     meta_file << "seq,nsamps,has_time,time_full,time_frac,err_code\n";
 
+    // Front-end cleanup state
+    uint64_t discard_left = cfg_.discard_samps;
+
     while (true) {
         auto item = q_.pop();
         if (!item.has_value()) break; // closed+empty
 
         auto blk = std::move(*item);
 
-        // Write IQ payload (valid prefix)
+        // Discard initial samples, then write remaining IQ payload
         if (blk->nsamps > 0) {
-            iq_file.write(reinterpret_cast<const char*>(blk->iq.data()),
-                          static_cast<std::streamsize>(blk->nsamps * sizeof(sc16)));
+            size_t start = 0;
+            if (discard_left > 0) {
+                const size_t drop = std::min<uint64_t>(discard_left, blk->nsamps);
+                discard_left -= drop;
+                start = drop;
+            }
+            const size_t out = blk->nsamps - start;
+            if (out > 0) {
+                iq_file.write(reinterpret_cast<const char*>(blk->iq.data() + start),
+                              static_cast<std::streamsize>(out * sizeof(sc16)));
+            }
         }
 
         const bool err_row = is_error_code_(
