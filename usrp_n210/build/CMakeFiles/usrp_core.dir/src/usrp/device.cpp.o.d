@@ -1420,4 +1420,28 @@ CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o: \
  /usr/include/boost/thread/shared_mutex.hpp \
  /usr/include/boost/thread/pthread/shared_mutex.hpp \
  /usr/local/include/uhd/usrp/subdev_spec.hpp \
+ /usr/local/include/uhd/cal/database.hpp \
+ /usr/local/include/uhd/utils/paths.hpp /usr/include/boost/filesystem.hpp \
+ /usr/include/boost/filesystem/config.hpp \
+ /usr/include/boost/filesystem/path.hpp \
+ /usr/include/boost/filesystem/path_traits.hpp \
+ /usr/include/boost/io/quoted.hpp \
+ /usr/include/boost/io/detail/buffer_fill.hpp \
+ /usr/include/boost/io/detail/ostream_guard.hpp \
+ /usr/include/boost/filesystem/exception.hpp \
+ /usr/include/boost/smart_ptr/intrusive_ptr.hpp \
+ /usr/include/boost/config/no_tr1/functional.hpp \
+ /usr/include/boost/smart_ptr/intrusive_ref_counter.hpp \
+ /usr/include/boost/smart_ptr/detail/atomic_count.hpp \
+ /usr/include/boost/smart_ptr/detail/atomic_count_gcc_atomic.hpp \
+ /usr/include/boost/filesystem/directory.hpp \
+ /usr/include/boost/filesystem/file_status.hpp \
+ /usr/include/boost/detail/bitmask.hpp \
+ /usr/include/boost/filesystem/operations.hpp \
+ /usr/include/boost/filesystem/convenience.hpp \
+ /usr/include/boost/filesystem/string_file.hpp \
+ /usr/include/boost/filesystem/fstream.hpp /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
  /usr/local/include/uhd/utils/thread.hpp

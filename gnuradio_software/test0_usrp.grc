@@ -33,11 +33,35 @@ options:
     state: enabled
 
 blocks:
+- name: collection_time_sec
+  id: variable
+  parameters:
+    comment: ''
+    value: '10'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [864, 12.0]
+    rotation: 0
+    state: true
+- name: fb
+  id: variable
+  parameters:
+    comment: ''
+    value: 10e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [752, 12.0]
+    rotation: 0
+    state: true
 - name: fc
   id: variable
   parameters:
     comment: ''
-    value: 100e6
+    value: 900e6
   states:
     bus_sink: false
     bus_source: false
@@ -88,7 +112,7 @@ blocks:
     alias: ''
     amp: '0.05'
     comment: ''
-    freq: 100e3
+    freq: fb
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -110,7 +134,7 @@ blocks:
     alias: ''
     amp: '0.05'
     comment: ''
-    freq: 100e3
+    freq: fb
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -122,9 +146,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [352, 476.0]
+    coordinate: [360, 596.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_complex_to_arg_0
   id: blocks_complex_to_arg
   parameters:
@@ -138,7 +162,65 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [816, 368.0]
+    coordinate: [864, 624.0]
+    rotation: 0
+    state: disabled
+- name: blocks_file_meta_sink_0
+  id: blocks_file_meta_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    detached: 'False'
+    extra_dict: pmt.make_dict()
+    file: gnu_rx_iq_cf32
+    max_seg_size: '1000000'
+    rel_rate: '1'
+    samp_rate: samp_rate
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1088, 164.0]
+    rotation: 0
+    state: disabled
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: /home/risc/ram/server_mount/Feb14/static/gnuradio/rx_iq_sc16_gnu_5msps_10s_short.bin
+    type: short
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [840, 124.0]
+    rotation: 0
+    state: true
+- name: blocks_head_0
+  id: blocks_head
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: int(samp_rate * collection_time_sec)
+    type: short
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [616, 276.0]
     rotation: 0
     state: true
 - name: blocks_multiply_conjugate_cc_1
@@ -154,9 +236,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [608, 432.0]
+    coordinate: [600, 552.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: high_pass_filter_0
   id: high_pass_filter
   parameters:
@@ -178,9 +260,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 452.0]
+    coordinate: [1152, 756.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -202,9 +284,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [944, 164.0]
+    coordinate: [992, 420.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: low_pass_filter_0_0
   id: low_pass_filter
   parameters:
@@ -226,9 +308,33 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1176, 164.0]
+    coordinate: [1224, 420.0]
     rotation: 0
-    state: enabled
+    state: disabled
+- name: low_pass_filter_0_1
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '50000'
+    decim: '20'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_fff
+    width: '25000'
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [856, 228.0]
+    rotation: 0
+    state: disabled
 - name: qtgui_const_sink_x_0
   id: qtgui_const_sink_x
   parameters:
@@ -318,7 +424,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [816, 524.0]
+    coordinate: [864, 780.0]
     rotation: 0
     state: disabled
 - name: qtgui_freq_sink_x_0
@@ -399,9 +505,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1288, 420.0]
+    coordinate: [1336, 676.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -496,7 +602,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1016, 340.0]
+    coordinate: [1064, 596.0]
     rotation: 0
     state: disabled
 - name: qtgui_time_sink_x_0_0
@@ -593,9 +699,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1296, 588.0]
+    coordinate: [1344, 844.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_waterfall_sink_x_0
   id: qtgui_waterfall_sink_x
   parameters:
@@ -768,7 +874,7 @@ blocks:
     clock_source6: ''
     clock_source7: ''
     comment: ''
-    dev_addr: addr=192.168.10.2
+    dev_addr: addr=192.168.10.3
     dev_args: ''
     gain0: '5'
     gain1: '0'
@@ -931,7 +1037,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 164.0]
+    coordinate: [336, 148.0]
     rotation: 0
     state: true
 - name: uhd_usrp_source_0
@@ -1077,7 +1183,7 @@ blocks:
     dc_offs7: 0+0j
     dc_offs8: 0+0j
     dc_offs9: 0+0j
-    dc_offs_enb0: default
+    dc_offs_enb0: auto
     dc_offs_enb1: default
     dc_offs_enb10: default
     dc_offs_enb11: default
@@ -1109,9 +1215,9 @@ blocks:
     dc_offs_enb7: default
     dc_offs_enb8: default
     dc_offs_enb9: default
-    dev_addr: addr=192.168.10.2
+    dev_addr: addr=192.168.10.3
     dev_args: ''
-    gain0: '15'
+    gain0: '8'
     gain1: '0'
     gain10: '0'
     gain11: '0'
@@ -1207,7 +1313,7 @@ blocks:
     iq_imbal7: 0+0j
     iq_imbal8: 0+0j
     iq_imbal9: 0+0j
-    iq_imbal_enb0: default
+    iq_imbal_enb0: auto
     iq_imbal_enb1: default
     iq_imbal_enb10: default
     iq_imbal_enb11: default
@@ -1362,12 +1468,12 @@ blocks:
     time_source5: ''
     time_source6: ''
     time_source7: ''
-    type: fc32
+    type: sc16
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 324.0]
+    coordinate: [328, 292.0]
     rotation: 0
     state: true
 
@@ -1376,13 +1482,14 @@ connections:
 - [analog_sig_source_x_0_0, '0', blocks_multiply_conjugate_cc_1, '1']
 - [blocks_complex_to_arg_0, '0', low_pass_filter_0, '0']
 - [blocks_complex_to_arg_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_head_0, '0', blocks_file_sink_0, '0']
 - [blocks_multiply_conjugate_cc_1, '0', blocks_complex_to_arg_0, '0']
 - [blocks_multiply_conjugate_cc_1, '0', qtgui_const_sink_x_0, '0']
 - [high_pass_filter_0, '0', qtgui_freq_sink_x_0, '0']
 - [high_pass_filter_0, '0', qtgui_time_sink_x_0_0, '0']
 - [low_pass_filter_0, '0', low_pass_filter_0_0, '0']
 - [low_pass_filter_0_0, '0', high_pass_filter_0, '0']
-- [uhd_usrp_source_0, '0', blocks_multiply_conjugate_cc_1, '0']
+- [uhd_usrp_source_0, '0', blocks_head_0, '0']
 
 metadata:
   file_format: 1

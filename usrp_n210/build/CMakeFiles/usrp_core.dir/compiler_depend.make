@@ -1555,6 +1555,32 @@ CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o: ../src/usrp/device.cpp \
   /usr/include/boost/thread/shared_mutex.hpp \
   /usr/include/boost/thread/pthread/shared_mutex.hpp \
   /usr/local/include/uhd/usrp/subdev_spec.hpp \
+  /usr/local/include/uhd/cal/database.hpp \
+  /usr/local/include/uhd/utils/paths.hpp \
+  /usr/include/boost/filesystem.hpp \
+  /usr/include/boost/filesystem/config.hpp \
+  /usr/include/boost/filesystem/path.hpp \
+  /usr/include/boost/filesystem/path_traits.hpp \
+  /usr/include/boost/io/quoted.hpp \
+  /usr/include/boost/io/detail/buffer_fill.hpp \
+  /usr/include/boost/io/detail/ostream_guard.hpp \
+  /usr/include/boost/filesystem/exception.hpp \
+  /usr/include/boost/smart_ptr/intrusive_ptr.hpp \
+  /usr/include/boost/config/no_tr1/functional.hpp \
+  /usr/include/boost/smart_ptr/intrusive_ref_counter.hpp \
+  /usr/include/boost/smart_ptr/detail/atomic_count.hpp \
+  /usr/include/boost/smart_ptr/detail/atomic_count_gcc_atomic.hpp \
+  /usr/include/boost/filesystem/directory.hpp \
+  /usr/include/boost/filesystem/file_status.hpp \
+  /usr/include/boost/detail/bitmask.hpp \
+  /usr/include/boost/filesystem/operations.hpp \
+  /usr/include/boost/filesystem/convenience.hpp \
+  /usr/include/boost/filesystem/string_file.hpp \
+  /usr/include/boost/filesystem/fstream.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
   /usr/local/include/uhd/utils/thread.hpp
 
 CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o: ../src/usrp/rx_stream.cpp \
@@ -4684,15 +4710,47 @@ CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: ../src/usrp/tx_stream.cpp \
 
 ../src/usrp/tx_stream.cpp:
 
+/usr/include/c++/11/condition_variable:
+
+/usr/local/include/uhd/utils/thread.hpp:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
 
 /usr/include/c++/11/fstream:
 
-/usr/include/c++/11/condition_variable:
+/usr/include/boost/filesystem/fstream.hpp:
 
-/usr/local/include/uhd/utils/thread.hpp:
+/usr/include/boost/filesystem/string_file.hpp:
+
+/usr/include/boost/filesystem/convenience.hpp:
+
+/usr/include/boost/filesystem/operations.hpp:
+
+/usr/include/boost/detail/bitmask.hpp:
+
+/usr/include/boost/filesystem/directory.hpp:
+
+/usr/include/boost/smart_ptr/detail/atomic_count.hpp:
+
+/usr/include/boost/filesystem/exception.hpp:
+
+/usr/include/boost/io/detail/ostream_guard.hpp:
+
+/usr/include/boost/io/detail/buffer_fill.hpp:
+
+/usr/include/boost/io/quoted.hpp:
+
+/usr/include/boost/filesystem/path_traits.hpp:
+
+/usr/include/boost/filesystem/config.hpp:
+
+/usr/include/boost/filesystem.hpp:
+
+/usr/local/include/uhd/utils/paths.hpp:
+
+/usr/local/include/uhd/cal/database.hpp:
 
 /usr/include/boost/move/detail/unique_ptr_meta_utils.hpp:
 
@@ -5195,6 +5253,8 @@ CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: ../src/usrp/tx_stream.cpp \
 /usr/include/boost/predef/os/windows.h:
 
 /usr/include/boost/predef/os/unix.h:
+
+/usr/include/boost/smart_ptr/intrusive_ptr.hpp:
 
 /usr/include/boost/predef/os/solaris.h:
 
@@ -6474,6 +6534,8 @@ CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: ../src/usrp/tx_stream.cpp \
 
 /usr/include/boost/math/special_functions/math_fwd.hpp:
 
+/usr/include/boost/filesystem/path.hpp:
+
 /usr/include/boost/smart_ptr/detail/spinlock_gcc_atomic.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
@@ -6869,6 +6931,8 @@ CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: ../src/usrp/tx_stream.cpp \
 /usr/include/boost/preprocessor/array/size.hpp:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/bind_fwd.hpp:
+
+/usr/include/boost/smart_ptr/detail/atomic_count_gcc_atomic.hpp:
 
 /usr/include/boost/iterator/iterator_traits.hpp:
 
@@ -7428,6 +7492,8 @@ CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: ../src/usrp/tx_stream.cpp \
 
 /usr/include/boost/predef/architecture/z.h:
 
+/usr/include/boost/filesystem/file_status.hpp:
+
 /usr/include/boost/mpl/aux_/preprocessed/gcc/fold_impl.hpp:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/greater_equal.hpp:
@@ -7559,6 +7625,8 @@ CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: ../src/usrp/tx_stream.cpp \
 /usr/include/boost/utility/detail/result_of_iterate.hpp:
 
 /usr/include/boost/mpl/greater_equal.hpp:
+
+/usr/include/boost/config/no_tr1/functional.hpp:
 
 /usr/include/c++/11/stdlib.h:
 
@@ -7801,6 +7869,8 @@ CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o: ../src/usrp/tx_stream.cpp \
 /usr/include/boost/predef/architecture/m68k.h:
 
 /usr/include/boost/predef/architecture/mips.h:
+
+/usr/include/boost/smart_ptr/intrusive_ref_counter.hpp:
 
 /usr/include/boost/predef/architecture/ppc.h:
 

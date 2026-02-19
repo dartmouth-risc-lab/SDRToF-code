@@ -1,7 +1,9 @@
 #include "usrp/device.hpp"
 
-#include <uhd/utils/thread.hpp>
+#include <uhd/cal/database.hpp>
 #include <uhd/exception.hpp>
+#include <uhd/utils/paths.hpp>
+#include <uhd/utils/thread.hpp>
 
 #include <sstream>
 #include <stdexcept>
@@ -73,6 +75,9 @@ void Device::apply_rx_config() {
         // Standard UHD front-end corrections
         usrp_->set_rx_dc_offset(cfg_.rx.enable_dc_offset, ch);
         usrp_->set_rx_iq_balance(cfg_.rx.enable_iq_balance, ch);
+
+        
+
     }
 }
 
@@ -99,6 +104,52 @@ std::string Device::pp_string() const {
        << " dc_offset=" << (cfg_.rx.enable_dc_offset ? "auto" : "off")
        << " iq_balance=" << (cfg_.rx.enable_iq_balance ? "auto" : "off")
        << "\n";
+
+    // Calibration database visibility (informational)
+    ss << "UHD cal DB path: " << uhd::get_cal_data_path() << "\n";
+    for (auto ch : cfg_.channels) {
+        const auto rx_info = usrp_->get_usrp_rx_info(ch);
+        const auto tx_info = usrp_->get_usrp_tx_info(ch);
+
+        auto dump_serials = [&](const char* label,
+                                const uhd::dict<std::string, std::string>& info) {
+            ss << label << " serials:";
+            bool any = false;
+            for (const auto& key : info.keys()) {
+                if (key.find("serial") != std::string::npos) {
+                    ss << " " << key << "=" << info.get(key, "");
+                    any = true;
+                }
+            }
+            if (!any) ss << " (none found)";
+            ss << "\n";
+        };
+
+        auto check_cal = [&](const char* cal_key,
+                             const uhd::dict<std::string, std::string>& info) {
+            for (const auto& key : info.keys()) {
+                if (key.find("serial") == std::string::npos) continue;
+                const auto serial = info.get(key, "");
+                if (serial.empty()) continue;
+                const bool fs = uhd::usrp::cal::database::has_cal_data(
+                    cal_key, serial, uhd::usrp::cal::source::FILESYSTEM);
+                const bool any = uhd::usrp::cal::database::has_cal_data(
+                    cal_key, serial, uhd::usrp::cal::source::ANY);
+                ss << "  cal[" << cal_key << "] "
+                   << key << "=" << serial
+                   << " fs=" << (fs ? "yes" : "no")
+                   << " any=" << (any ? "yes" : "no")
+                   << "\n";
+            }
+        };
+
+        ss << "Cal lookup (chan " << ch << "):\n";
+        dump_serials("  RX", rx_info);
+        dump_serials("  TX", tx_info);
+        check_cal("rx_iq", rx_info);
+        check_cal("tx_iq", tx_info);
+        check_cal("tx_dc", tx_info);
+    }
 
     // UHD’s own pretty printer (often helpful)
     ss << "\nUHD device:\n" << usrp_->get_pp_string() << "\n";
