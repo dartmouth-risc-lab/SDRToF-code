@@ -34,16 +34,16 @@ static std::string timestamp_utc_like() {
 int main() {
     try {
         // -------------------- Run parameters (edit here) --------------------
-        const double Fs = 5e6;       // sample rate (try 1e6, 5e6, 10e6)
-        const double Fc_Tx = 900e6;  // TX RF LO
+        const double Fs = 10e6;       // sample rate (try 1e6, 5e6, 10e6)
+        const double Fc_Tx = 900e6;  // TX RF LO    
         const double Fc_Rx = 900e6;  // RX RF LO
         const double fb = 10e3;      // TX baseband tone
-        const double tx_seconds = 10.0;
+        const double tx_seconds = 5.0;
         const double rx_seconds = tx_seconds + 0.5;
 
         // Output base directory
-        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Feb19/2dgalvo/";
-        const std::string tag = "dynamic_marker"; // any label you want in filenames
+        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Feb26/2dgalvo/";
+        const std::string tag = "TxRxFb_900_900_10_optical_static"; // any label you want in filenames
         // --------------------------------------------------------------------
 
         // Create unique run directory
@@ -90,13 +90,13 @@ int main() {
         // TX (RF1)
         dcfg.tx.rate_sps = Fs;
         dcfg.tx.freq_hz  = Fc_Tx;
-        dcfg.tx.gain_db  = 18.; // 28 was good for retroreflective // 38 for direct speaker // 14. for Rx Tx shorted
+        dcfg.tx.gain_db  = 28.; // 28 was good for retroreflective // 38 for direct speaker // 12. for Rx Tx shorted // 42 for galvo with NDF 20 w/ NDF
         dcfg.tx.ant      = "TX/RX";
 
         // RX (RF2)
         dcfg.rx.rate_sps = Fs;
         dcfg.rx.freq_hz  = Fc_Rx;
-        dcfg.rx.gain_db  = 2.; // 10 db for optical
+        dcfg.rx.gain_db  = 8.; // 10 db for optical, 4 db for galvo
         dcfg.rx.ant      = "RX2";
         dcfg.rx.enable_dc_offset = true;   // UHD auto DC offset correction
         dcfg.rx.enable_iq_balance = true;  // UHD auto IQ balance correction

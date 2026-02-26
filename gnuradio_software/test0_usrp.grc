@@ -184,7 +184,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1088, 164.0]
+    coordinate: [584, 676.0]
     rotation: 0
     state: disabled
 - name: blocks_file_sink_0
@@ -194,8 +194,8 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: /home/risc/ram/server_mount/Feb14/static/gnuradio/rx_iq_sc16_gnu_5msps_10s_short.bin
-    type: short
+    file: /home/risc/ram/server_mount/Feb23/static/gnuradio/gnu_5msps_TxRxFb_900_900_10_10s.bin
+    type: complex
     unbuffered: 'False'
     vlen: '1'
   states:
@@ -214,7 +214,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     num_items: int(samp_rate * collection_time_sec)
-    type: short
+    type: complex
     vlen: '1'
   states:
     bus_sink: false
@@ -332,7 +332,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [856, 228.0]
+    coordinate: [576, 828.0]
     rotation: 0
     state: disabled
 - name: qtgui_const_sink_x_0
@@ -427,6 +427,98 @@ blocks:
     coordinate: [864, 780.0]
     rotation: 0
     state: disabled
+- name: qtgui_const_sink_x_0_0
+  id: qtgui_const_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    axislabels: 'True'
+    color1: '"blue"'
+    color10: '"red"'
+    color2: '"red"'
+    color3: '"red"'
+    color4: '"red"'
+    color5: '"red"'
+    color6: '"red"'
+    color7: '"red"'
+    color8: '"red"'
+    color9: '"red"'
+    comment: ''
+    grid: 'True'
+    gui_hint: ''
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    marker1: '0'
+    marker10: '0'
+    marker2: '0'
+    marker3: '0'
+    marker4: '0'
+    marker5: '0'
+    marker6: '0'
+    marker7: '0'
+    marker8: '0'
+    marker9: '0'
+    name: IQ constellation
+    nconnections: '1'
+    size: '1024'
+    style1: '0'
+    style10: '0'
+    style2: '0'
+    style3: '0'
+    style4: '0'
+    style5: '0'
+    style6: '0'
+    style7: '0'
+    style8: '0'
+    style9: '0'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: complex
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    xmax: '2'
+    xmin: '-2'
+    ymax: '2'
+    ymin: '-2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [632, 388.0]
+    rotation: 0
+    state: enabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -760,7 +852,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1032, 788.0]
+    coordinate: [920, 884.0]
     rotation: 0
     state: disabled
 - name: uhd_usrp_sink_0
@@ -874,7 +966,7 @@ blocks:
     clock_source6: ''
     clock_source7: ''
     comment: ''
-    dev_addr: addr=192.168.10.3
+    dev_addr: addr=192.168.10.2
     dev_args: ''
     gain0: '5'
     gain1: '0'
@@ -1183,7 +1275,7 @@ blocks:
     dc_offs7: 0+0j
     dc_offs8: 0+0j
     dc_offs9: 0+0j
-    dc_offs_enb0: auto
+    dc_offs_enb0: default
     dc_offs_enb1: default
     dc_offs_enb10: default
     dc_offs_enb11: default
@@ -1215,7 +1307,7 @@ blocks:
     dc_offs_enb7: default
     dc_offs_enb8: default
     dc_offs_enb9: default
-    dev_addr: addr=192.168.10.3
+    dev_addr: addr=192.168.10.2
     dev_args: ''
     gain0: '8'
     gain1: '0'
@@ -1313,7 +1405,7 @@ blocks:
     iq_imbal7: 0+0j
     iq_imbal8: 0+0j
     iq_imbal9: 0+0j
-    iq_imbal_enb0: auto
+    iq_imbal_enb0: default
     iq_imbal_enb1: default
     iq_imbal_enb10: default
     iq_imbal_enb11: default
@@ -1468,7 +1560,7 @@ blocks:
     time_source5: ''
     time_source6: ''
     time_source7: ''
-    type: sc16
+    type: fc32
   states:
     bus_sink: false
     bus_source: false
@@ -1490,6 +1582,7 @@ connections:
 - [low_pass_filter_0, '0', low_pass_filter_0_0, '0']
 - [low_pass_filter_0_0, '0', high_pass_filter_0, '0']
 - [uhd_usrp_source_0, '0', blocks_head_0, '0']
+- [uhd_usrp_source_0, '0', qtgui_const_sink_x_0_0, '0']
 
 metadata:
   file_format: 1
