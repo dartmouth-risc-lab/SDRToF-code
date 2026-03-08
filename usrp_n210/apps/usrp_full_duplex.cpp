@@ -38,12 +38,13 @@ int main() {
         const double Fc_Tx = 900e6;  // TX RF LO    
         const double Fc_Rx = 900e6;  // RX RF LO
         const double fb = 10e3;      // TX baseband tone
-        const double tx_seconds = 5.0;
+        const double tx_seconds = 60.0;
         const double rx_seconds = tx_seconds + 0.5;
 
         // Output base directory
-        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Feb26/2dgalvo/";
-        const std::string tag = "TxRxFb_900_900_10_optical_static"; // any label you want in filenames
+        // Experimental dataset: https://docs.google.com/spreadsheets/d/1yT-kiDoTMfyYK5ygdfKt_a3NO-284xjMuz2VHdL0GEQ/edit?gid=0#gid=0
+        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Mar5/calibstage/";
+        const std::string tag = "TxRxFb_900_900_10_iter0"; // any label you want in filenames
         // --------------------------------------------------------------------
 
         // Create unique run directory
@@ -90,13 +91,14 @@ int main() {
         // TX (RF1)
         dcfg.tx.rate_sps = Fs;
         dcfg.tx.freq_hz  = Fc_Tx;
-        dcfg.tx.gain_db  = 28.; // 28 was good for retroreflective // 38 for direct speaker // 12. for Rx Tx shorted // 42 for galvo with NDF 20 w/ NDF
+        dcfg.tx.gain_db  = 28.; // 28 was good for retroreflective // 38 for direct speaker // 12 for Rx Tx shorted // 42 for galvo with NDF 20 w/ NDF
+        // 14 for tuning fork
         dcfg.tx.ant      = "TX/RX";
 
         // RX (RF2)
         dcfg.rx.rate_sps = Fs;
         dcfg.rx.freq_hz  = Fc_Rx;
-        dcfg.rx.gain_db  = 8.; // 10 db for optical, 4 db for galvo
+        dcfg.rx.gain_db  = 8.; // 10 db for optical, 4 db for galvo ; 4 for tuning fork
         dcfg.rx.ant      = "RX2";
         dcfg.rx.enable_dc_offset = true;   // UHD auto DC offset correction
         dcfg.rx.enable_iq_balance = true;  // UHD auto IQ balance correction
