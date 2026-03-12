@@ -34,23 +34,21 @@ static std::string timestamp_utc_like() {
 int main() {
     try {
         // -------------------- Run parameters (edit here) --------------------
-        const double Fs = 10e6;       // sample rate (try 1e6, 5e6, 10e6)
+        const double Fs = 10e6;       // sample rate (try 1e6, 5e6, 10e6 depending upon your network/storage performance; adjust rx_stream block size if changing)
         const double Fc_Tx = 900e6;  // TX RF LO    
         const double Fc_Rx = 900e6;  // RX RF LO
         const double fb = 10e3;      // TX baseband tone
-        const double tx_seconds = 60.0;
+        const double tx_seconds = 10.0;
         const double rx_seconds = tx_seconds + 0.5;
-
         // Output base directory
         // Experimental dataset: https://docs.google.com/spreadsheets/d/1yT-kiDoTMfyYK5ygdfKt_a3NO-284xjMuz2VHdL0GEQ/edit?gid=0#gid=0
-        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Mar5/calibstage/";
-        const std::string tag = "TxRxFb_900_900_10_iter0"; // any label you want in filenames
+        const std::filesystem::path out_dir = "";
+        const std::string tag = "TxRxFb_900_900_10_sceneName_sceneDetails"; // any label you want in filenames
         // --------------------------------------------------------------------
 
+
         // Create unique run directory
-        // const std::string stamp = timestamp_utc_like();
         std::string stamp = ""; 
-        // const std::filesystem::path run_dir = out_dir / (stamp + "_" + tag);
         std::filesystem::path run_dir = out_dir; 
         std::error_code ec;
         std::filesystem::create_directories(run_dir, ec);
@@ -66,8 +64,8 @@ int main() {
 
        std::ostringstream duration_tag;
        duration_tag << std::fixed << std::setprecision(1) << static_cast<int>(tx_seconds) << "s";
-        // std::ostringstream duration_tag;
-        // duration_tag << static_cast<int>(tx_seconds) << "s";
+
+
        // output paths
         const std::string iq_path =
             (out_dir / ("rx_iq_sc16_" + fs_tag.str() + "_" + duration_tag.str() + ".bin")).string();
