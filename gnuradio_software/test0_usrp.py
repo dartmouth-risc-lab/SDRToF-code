@@ -77,10 +77,11 @@ class test0_usrp(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 10e6
-        self.fs_stage1 = fs_stage1 = samp_rate/8
-        self.fs_stage2 = fs_stage2 = fs_stage1/4
-        self.fs_stage3 = fs_stage3 = fs_stage2/4
+        self.samp_rate = samp_rate = 2e6
+        self.factors = factors = [4,2,1]
+        self.fs_stage1 = fs_stage1 = samp_rate/factors[0]
+        self.fs_stage2 = fs_stage2 = fs_stage1/factors[1]
+        self.fs_stage3 = fs_stage3 = fs_stage2/factors[2]
         self.fc = fc = 900e6
         self.fb = fb = 10e3
         self.collection_time_sec = collection_time_sec = 10
@@ -116,26 +117,62 @@ class test0_usrp(gr.top_block, Qt.QWidget):
 
         self.uhd_usrp_sink_0.set_center_freq(fc, 0)
         self.uhd_usrp_sink_0.set_antenna("TX/RX", 0)
-        self.uhd_usrp_sink_0.set_gain(28, 0)
-        self.qtgui_time_sink_x_0_0 = qtgui.time_sink_f(
-            2048, #size
-            fs_stage2, #samp_rate
+        self.uhd_usrp_sink_0.set_gain(24, 0)
+        self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_f(
+            1024, #size
+            window.WIN_BLACKMAN_hARRIS, #wintype
+            0, #fc
+            10000, #bw
+            "", #name
+            1, #number of inputs
+            None # parent
+        )
+        self.qtgui_waterfall_sink_x_0.set_update_time(0.1)
+        self.qtgui_waterfall_sink_x_0.enable_grid(True)
+        self.qtgui_waterfall_sink_x_0.enable_axis_labels(True)
+
+
+        self.qtgui_waterfall_sink_x_0.set_plot_pos_half(not True)
+
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        colors = [0, 0, 0, 0, 0,
+                  0, 0, 0, 0, 0]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+
+        for i in range(1):
+            if len(labels[i]) == 0:
+                self.qtgui_waterfall_sink_x_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_waterfall_sink_x_0.set_line_label(i, labels[i])
+            self.qtgui_waterfall_sink_x_0.set_color_map(i, colors[i])
+            self.qtgui_waterfall_sink_x_0.set_line_alpha(i, alphas[i])
+
+        self.qtgui_waterfall_sink_x_0.set_intensity_range(-140, 10)
+
+        self._qtgui_waterfall_sink_x_0_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_0.qwidget(), Qt.QWidget)
+
+        self.top_layout.addWidget(self._qtgui_waterfall_sink_x_0_win)
+        self.qtgui_time_sink_x_0_0_0 = qtgui.time_sink_f(
+            4096, #size
+            fs_stage3, #samp_rate
             'Phase (arg(I + jQ))', #name
             1, #number of inputs
             None # parent
         )
-        self.qtgui_time_sink_x_0_0.set_update_time(0.10)
-        self.qtgui_time_sink_x_0_0.set_y_axis(-1, 1)
+        self.qtgui_time_sink_x_0_0_0.set_update_time(0.1)
+        self.qtgui_time_sink_x_0_0_0.set_y_axis(-2, 2)
 
-        self.qtgui_time_sink_x_0_0.set_y_label('Phase', 'rad')
+        self.qtgui_time_sink_x_0_0_0.set_y_label('Phase', 'rad')
 
-        self.qtgui_time_sink_x_0_0.enable_tags(True)
-        self.qtgui_time_sink_x_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
-        self.qtgui_time_sink_x_0_0.enable_autoscale(True)
-        self.qtgui_time_sink_x_0_0.enable_grid(True)
-        self.qtgui_time_sink_x_0_0.enable_axis_labels(True)
-        self.qtgui_time_sink_x_0_0.enable_control_panel(False)
-        self.qtgui_time_sink_x_0_0.enable_stem_plot(False)
+        self.qtgui_time_sink_x_0_0_0.enable_tags(True)
+        self.qtgui_time_sink_x_0_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
+        self.qtgui_time_sink_x_0_0_0.enable_autoscale(True)
+        self.qtgui_time_sink_x_0_0_0.enable_grid(True)
+        self.qtgui_time_sink_x_0_0_0.enable_axis_labels(True)
+        self.qtgui_time_sink_x_0_0_0.enable_control_panel(False)
+        self.qtgui_time_sink_x_0_0_0.enable_stem_plot(False)
 
 
         labels = ['Signal 1', 'Signal 2', 'Signal 3', 'Signal 4', 'Signal 5',
@@ -154,18 +191,45 @@ class test0_usrp(gr.top_block, Qt.QWidget):
 
         for i in range(1):
             if len(labels[i]) == 0:
-                self.qtgui_time_sink_x_0_0.set_line_label(i, "Data {0}".format(i))
+                self.qtgui_time_sink_x_0_0_0.set_line_label(i, "Data {0}".format(i))
             else:
-                self.qtgui_time_sink_x_0_0.set_line_label(i, labels[i])
-            self.qtgui_time_sink_x_0_0.set_line_width(i, widths[i])
-            self.qtgui_time_sink_x_0_0.set_line_color(i, colors[i])
-            self.qtgui_time_sink_x_0_0.set_line_style(i, styles[i])
-            self.qtgui_time_sink_x_0_0.set_line_marker(i, markers[i])
-            self.qtgui_time_sink_x_0_0.set_line_alpha(i, alphas[i])
+                self.qtgui_time_sink_x_0_0_0.set_line_label(i, labels[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_width(i, widths[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_color(i, colors[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_style(i, styles[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_marker(i, markers[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_alpha(i, alphas[i])
 
-        self._qtgui_time_sink_x_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0.qwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_time_sink_x_0_0_win)
-        self.low_pass_filter_0_0_0_0 = filter.fir_filter_fff(
+        self._qtgui_time_sink_x_0_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0_0.qwidget(), Qt.QWidget)
+        self.top_layout.addWidget(self._qtgui_time_sink_x_0_0_0_win)
+        self.low_pass_filter_0_1_0_0 = filter.fir_filter_ccf(
+            factors[2],
+            firdes.low_pass(
+                1,
+                fs_stage2,
+                0.4*fs_stage3,
+                0.15*fs_stage3,
+                window.WIN_HAMMING,
+                6.76))
+        self.low_pass_filter_0_1_0 = filter.fir_filter_ccf(
+            factors[1],
+            firdes.low_pass(
+                1,
+                fs_stage1,
+                0.35*fs_stage2,
+                0.1*fs_stage2,
+                window.WIN_HAMMING,
+                6.76))
+        self.low_pass_filter_0_1 = filter.fir_filter_ccf(
+            factors[0],
+            firdes.low_pass(
+                1,
+                samp_rate,
+                0.35*fs_stage1,
+                0.1*fs_stage1,
+                window.WIN_HAMMING,
+                6.76))
+        self.low_pass_filter_0_0_0_0_0 = filter.fir_filter_ccf(
             1,
             firdes.low_pass(
                 1,
@@ -174,51 +238,24 @@ class test0_usrp(gr.top_block, Qt.QWidget):
                 5000,
                 window.WIN_HAMMING,
                 6.76))
-        self.low_pass_filter_0_0_0 = filter.fir_filter_fff(
-            4,
-            firdes.low_pass(
-                1,
-                fs_stage2,
-                90000,
-                20000,
-                window.WIN_HAMMING,
-                6.76))
-        self.low_pass_filter_0_0 = filter.fir_filter_fff(
-            4,
-            firdes.low_pass(
-                1,
-                fs_stage1,
-                450000,
-                25000,
-                window.WIN_HAMMING,
-                6.76))
-        self.low_pass_filter_0 = filter.fir_filter_fff(
-            8,
-            firdes.low_pass(
-                1,
-                samp_rate,
-                625000,
-                100000,
-                window.WIN_HAMMING,
-                6.76))
         self.blocks_multiply_conjugate_cc_1 = blocks.multiply_conjugate_cc(1)
-        self.blocks_complex_to_arg_0 = blocks.complex_to_arg(1)
-        self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_SIN_WAVE, fb, 0.05, 0, 0)
-        self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_SIN_WAVE, fb, 0.05, 0, 0)
+        self.blocks_complex_to_arg_0_0 = blocks.complex_to_arg(1)
+        self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_SIN_WAVE, fb, 0.1, 0, 0)
 
 
         ##################################################
         # Connections
         ##################################################
+        self.connect((self.analog_sig_source_x_0, 0), (self.blocks_multiply_conjugate_cc_1, 0))
         self.connect((self.analog_sig_source_x_0, 0), (self.uhd_usrp_sink_0, 0))
-        self.connect((self.analog_sig_source_x_0_0, 0), (self.blocks_multiply_conjugate_cc_1, 1))
-        self.connect((self.blocks_complex_to_arg_0, 0), (self.low_pass_filter_0, 0))
-        self.connect((self.blocks_multiply_conjugate_cc_1, 0), (self.blocks_complex_to_arg_0, 0))
-        self.connect((self.low_pass_filter_0, 0), (self.low_pass_filter_0_0, 0))
-        self.connect((self.low_pass_filter_0_0, 0), (self.low_pass_filter_0_0_0, 0))
-        self.connect((self.low_pass_filter_0_0_0, 0), (self.low_pass_filter_0_0_0_0, 0))
-        self.connect((self.low_pass_filter_0_0_0_0, 0), (self.qtgui_time_sink_x_0_0, 0))
-        self.connect((self.uhd_usrp_source_0, 0), (self.blocks_multiply_conjugate_cc_1, 0))
+        self.connect((self.blocks_complex_to_arg_0_0, 0), (self.qtgui_time_sink_x_0_0_0, 0))
+        self.connect((self.blocks_complex_to_arg_0_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
+        self.connect((self.blocks_multiply_conjugate_cc_1, 0), (self.low_pass_filter_0_1, 0))
+        self.connect((self.low_pass_filter_0_0_0_0_0, 0), (self.blocks_complex_to_arg_0_0, 0))
+        self.connect((self.low_pass_filter_0_1, 0), (self.low_pass_filter_0_1_0, 0))
+        self.connect((self.low_pass_filter_0_1_0, 0), (self.low_pass_filter_0_1_0_0, 0))
+        self.connect((self.low_pass_filter_0_1_0_0, 0), (self.low_pass_filter_0_0_0_0_0, 0))
+        self.connect((self.uhd_usrp_source_0, 0), (self.blocks_multiply_conjugate_cc_1, 1))
 
 
     def closeEvent(self, event):
@@ -234,36 +271,48 @@ class test0_usrp(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.set_fs_stage1(self.samp_rate/8)
+        self.set_fs_stage1(self.samp_rate/self.factors[0])
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
-        self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 625000, 100000, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1.set_taps(firdes.low_pass(1, self.samp_rate, 0.35*self.fs_stage1, 0.1*self.fs_stage1, window.WIN_HAMMING, 6.76))
         self.uhd_usrp_sink_0.set_samp_rate(self.samp_rate)
         self.uhd_usrp_source_0.set_samp_rate(self.samp_rate)
+
+    def get_factors(self):
+        return self.factors
+
+    def set_factors(self, factors):
+        self.factors = factors
+        self.set_fs_stage1(self.samp_rate/self.factors[0])
+        self.set_fs_stage2(self.fs_stage1/self.factors[1])
+        self.set_fs_stage3(self.fs_stage2/self.factors[2])
 
     def get_fs_stage1(self):
         return self.fs_stage1
 
     def set_fs_stage1(self, fs_stage1):
         self.fs_stage1 = fs_stage1
-        self.set_fs_stage2(self.fs_stage1/4)
-        self.low_pass_filter_0_0.set_taps(firdes.low_pass(1, self.fs_stage1, 450000, 25000, window.WIN_HAMMING, 6.76))
+        self.set_fs_stage2(self.fs_stage1/self.factors[1])
+        self.low_pass_filter_0_1.set_taps(firdes.low_pass(1, self.samp_rate, 0.35*self.fs_stage1, 0.1*self.fs_stage1, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1_0.set_taps(firdes.low_pass(1, self.fs_stage1, 0.35*self.fs_stage2, 0.1*self.fs_stage2, window.WIN_HAMMING, 6.76))
 
     def get_fs_stage2(self):
         return self.fs_stage2
 
     def set_fs_stage2(self, fs_stage2):
         self.fs_stage2 = fs_stage2
-        self.set_fs_stage3(self.fs_stage2/4)
-        self.low_pass_filter_0_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, 90000, 20000, window.WIN_HAMMING, 6.76))
-        self.qtgui_time_sink_x_0_0.set_samp_rate(self.fs_stage2)
+        self.set_fs_stage3(self.fs_stage2/self.factors[2])
+        self.low_pass_filter_0_1_0.set_taps(firdes.low_pass(1, self.fs_stage1, 0.35*self.fs_stage2, 0.1*self.fs_stage2, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, 0.4*self.fs_stage3, 0.15*self.fs_stage3, window.WIN_HAMMING, 6.76))
 
     def get_fs_stage3(self):
         return self.fs_stage3
 
     def set_fs_stage3(self, fs_stage3):
         self.fs_stage3 = fs_stage3
-        self.low_pass_filter_0_0_0_0.set_taps(firdes.low_pass(1, self.fs_stage3, 20000, 5000, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_0_0_0_0.set_taps(firdes.low_pass(1, self.fs_stage3, 20000, 5000, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_0_0_0_0_0.set_taps(firdes.low_pass(1, self.fs_stage3, 10000, 5000, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, 0.4*self.fs_stage3, 0.15*self.fs_stage3, window.WIN_HAMMING, 6.76))
+        self.qtgui_time_sink_x_0_0_0.set_samp_rate(self.fs_stage3)
 
     def get_fc(self):
         return self.fc
@@ -279,7 +328,6 @@ class test0_usrp(gr.top_block, Qt.QWidget):
     def set_fb(self, fb):
         self.fb = fb
         self.analog_sig_source_x_0.set_frequency(self.fb)
-        self.analog_sig_source_x_0_0.set_frequency(self.fb)
 
     def get_collection_time_sec(self):
         return self.collection_time_sec

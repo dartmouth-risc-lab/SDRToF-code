@@ -42,8 +42,8 @@ int main() {
         const double rx_seconds = tx_seconds + 0.5;
         // Output base directory
         // Experimental dataset: https://docs.google.com/spreadsheets/d/1yT-kiDoTMfyYK5ygdfKt_a3NO-284xjMuz2VHdL0GEQ/edit?gid=0#gid=0
-        const std::filesystem::path out_dir = "";
-        const std::string tag = "TxRxFb_900_900_10_sceneName_sceneDetails"; // any label you want in filenames
+        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Mar19/";
+        const std::string tag = "interstellar_audio_1"; // any label you want in filenames
         // --------------------------------------------------------------------
 
 

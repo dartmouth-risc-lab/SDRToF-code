@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "usrp_n210",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "usrp_core::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-usrp_core-Debug-8a9992e396c18355f408.json",
+					"name" : "usrp_core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "usrp_full_duplex::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-usrp_full_duplex-Debug-a21f887658e791cb9866.json",
+					"name" : "usrp_full_duplex",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/risc/ram/USRP/usrp_software/usrp_n210/build",
+		"source" : "/home/risc/ram/USRP/usrp_software/usrp_n210"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/risc/ram/USRP/usrp_software/usrp_n210/build",
+  "command": "/usr/bin/g++  -I/home/risc/ram/USRP/usrp_software/usrp_n210/include -g -std=gnu++17 -o CMakeFiles/usrp_core.dir/src/usrp/device.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/device.cpp",
+  "file": "/home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/device.cpp"
+},
+{
+  "directory": "/home/risc/ram/USRP/usrp_software/usrp_n210/build",
+  "command": "/usr/bin/g++  -I/home/risc/ram/USRP/usrp_software/usrp_n210/include -g -std=gnu++17 -o CMakeFiles/usrp_core.dir/src/usrp/rx_stream.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/rx_stream.cpp",
+  "file": "/home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/rx_stream.cpp"
+},
+{
+  "directory": "/home/risc/ram/USRP/usrp_software/usrp_n210/build",
+  "command": "/usr/bin/g++  -I/home/risc/ram/USRP/usrp_software/usrp_n210/include -g -std=gnu++17 -o CMakeFiles/usrp_core.dir/src/usrp/tx_stream.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/tx_stream.cpp",
+  "file": "/home/risc/ram/USRP/usrp_software/usrp_n210/src/usrp/tx_stream.cpp"
+},
+{
+  "directory": "/home/risc/ram/USRP/usrp_software/usrp_n210/build",
+  "command": "/usr/bin/g++  -I/home/risc/ram/USRP/usrp_software/usrp_n210/include -g -std=gnu++17 -o CMakeFiles/usrp_full_duplex.dir/apps/usrp_full_duplex.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/apps/usrp_full_duplex.cpp",
+  "file": "/home/risc/ram/USRP/usrp_software/usrp_n210/apps/usrp_full_duplex.cpp"
+}
+]
