@@ -38,12 +38,12 @@ int main() {
         const double Fc_Tx = 900e6;  // TX RF LO    
         const double Fc_Rx = 900e6;  // RX RF LO
         const double fb = 10e3;      // TX baseband tone
-        const double tx_seconds = 10.0;
+        const double tx_seconds = 5.0;
         const double rx_seconds = tx_seconds + 0.5;
         // Output base directory
         // Experimental dataset: https://docs.google.com/spreadsheets/d/1yT-kiDoTMfyYK5ygdfKt_a3NO-284xjMuz2VHdL0GEQ/edit?gid=0#gid=0
-        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Mar19/";
-        const std::string tag = "interstellar_audio_1"; // any label you want in filenames
+        const std::filesystem::path out_dir = "/home/risc/ram/server_mount/Mar24/";
+        const std::string tag = "static_whiteBackground"; // any label you want in filenames
         // --------------------------------------------------------------------
 
 
