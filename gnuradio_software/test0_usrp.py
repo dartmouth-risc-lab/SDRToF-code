@@ -234,7 +234,7 @@ class test0_usrp(gr.top_block, Qt.QWidget):
             firdes.low_pass(
                 1,
                 fs_stage3,
-                20000,
+                12000,
                 5000,
                 window.WIN_HAMMING,
                 6.76))
@@ -309,7 +309,7 @@ class test0_usrp(gr.top_block, Qt.QWidget):
 
     def set_fs_stage3(self, fs_stage3):
         self.fs_stage3 = fs_stage3
-        self.low_pass_filter_0_0_0_0_0.set_taps(firdes.low_pass(1, self.fs_stage3, 20000, 5000, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_0_0_0_0.set_taps(firdes.low_pass(1, self.fs_stage3, 12000, 5000, window.WIN_HAMMING, 6.76))
         self.low_pass_filter_0_0_0_0_0_0.set_taps(firdes.low_pass(1, self.fs_stage3, 10000, 5000, window.WIN_HAMMING, 6.76))
         self.low_pass_filter_0_1_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, 0.4*self.fs_stage3, 0.15*self.fs_stage3, window.WIN_HAMMING, 6.76))
         self.qtgui_time_sink_x_0_0_0.set_samp_rate(self.fs_stage3)
