@@ -67,6 +67,7 @@ struct RxCaptureConfig {
     std::string meta_path = "rx_meta.csv";
 
     // Metadata policy:
+    // - If meta_path is empty: do not write a metadata/event file
     // - If false (default): write metadata only on errors (overflow/timeout/other)
     // - If true: write one metadata row per block (still much less than per-packet)
     bool write_full_metadata = false;

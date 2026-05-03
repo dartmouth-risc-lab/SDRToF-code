@@ -152,8 +152,12 @@ void RxCapture::writer_thread_fn_() {
     std::ofstream iq_file(cfg_.iq_path, std::ios::binary);
     if (!iq_file) throw std::runtime_error("Failed to open IQ output file: " + cfg_.iq_path);
 
-    std::ofstream meta_file(cfg_.meta_path);
-    if (!meta_file) throw std::runtime_error("Failed to open meta output file: " + cfg_.meta_path);
+    const bool write_meta_file = !cfg_.meta_path.empty();
+    std::ofstream meta_file;
+    if (write_meta_file) {
+        meta_file.open(cfg_.meta_path);
+        if (!meta_file) throw std::runtime_error("Failed to open meta output file: " + cfg_.meta_path);
+    }
 
     // Increase std::ofstream internal buffering (reduces syscall overhead)
     std::vector<char> iq_buf(cfg_.iq_file_buffer_bytes);
@@ -162,12 +166,14 @@ void RxCapture::writer_thread_fn_() {
     }
 
     std::vector<char> meta_buf(cfg_.meta_file_buffer_bytes);
-    if (!meta_buf.empty()) {
+    if (write_meta_file && !meta_buf.empty()) {
         meta_file.rdbuf()->pubsetbuf(meta_buf.data(), static_cast<std::streamsize>(meta_buf.size()));
     }
 
     // Metadata: either error-only rows (default) or one row per block.
-    meta_file << "seq,nsamps,has_time,time_full,time_frac,err_code\n";
+    if (write_meta_file) {
+        meta_file << "seq,nsamps,has_time,time_full,time_frac,err_code\n";
+    }
 
     // Front-end cleanup state
     uint64_t discard_left = cfg_.discard_samps;
@@ -197,7 +203,7 @@ void RxCapture::writer_thread_fn_() {
             static_cast<uhd::rx_metadata_t::error_code_t>(blk->err_code)
         );
 
-        if (cfg_.write_full_metadata || err_row) {
+        if (write_meta_file && (cfg_.write_full_metadata || err_row)) {
             meta_file << blk->seq << ","
                       << blk->nsamps << ","
                       << (blk->has_time ? 1 : 0) << ","
@@ -217,7 +223,9 @@ void RxCapture::writer_thread_fn_() {
     }
 
     iq_file.flush();
-    meta_file.flush();
+    if (write_meta_file) {
+        meta_file.flush();
+    }
 }
 
 } // namespace usrp

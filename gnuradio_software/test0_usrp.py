@@ -117,7 +117,7 @@ class test0_usrp(gr.top_block, Qt.QWidget):
 
         self.uhd_usrp_sink_0.set_center_freq(fc, 0)
         self.uhd_usrp_sink_0.set_antenna("TX/RX", 0)
-        self.uhd_usrp_sink_0.set_gain(30, 0)
+        self.uhd_usrp_sink_0.set_gain(28, 0)
         self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_f(
             4096, #size
             window.WIN_BLACKMAN_hARRIS, #wintype
@@ -156,12 +156,12 @@ class test0_usrp(gr.top_block, Qt.QWidget):
         self.top_layout.addWidget(self._qtgui_waterfall_sink_x_0_win)
         self.qtgui_time_sink_x_0_0_0 = qtgui.time_sink_f(
             4096, #size
-            fs_stage3/2, #samp_rate
+            fs_stage3, #samp_rate
             'Phase (arg(I + jQ))', #name
             1, #number of inputs
             None # parent
         )
-        self.qtgui_time_sink_x_0_0_0.set_update_time(0.1)
+        self.qtgui_time_sink_x_0_0_0.set_update_time(0.05)
         self.qtgui_time_sink_x_0_0_0.set_y_axis(-2, 2)
 
         self.qtgui_time_sink_x_0_0_0.set_y_label('Phase', 'rad')
@@ -230,7 +230,7 @@ class test0_usrp(gr.top_block, Qt.QWidget):
                 window.WIN_HAMMING,
                 6.76))
         self.low_pass_filter_0_0_0_0_0 = filter.fir_filter_ccf(
-            2,
+            1,
             firdes.low_pass(
                 4,
                 fs_stage3,
@@ -312,7 +312,7 @@ class test0_usrp(gr.top_block, Qt.QWidget):
         self.high_pass_filter_0.set_taps(firdes.high_pass(1, self.fs_stage3/2, 30, 60, window.WIN_HANN, 6.76))
         self.low_pass_filter_0_0_0_0_0.set_taps(firdes.low_pass(4, self.fs_stage3, 7000, 2000, window.WIN_HAMMING, 6.76))
         self.low_pass_filter_0_1_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, 0.4*self.fs_stage3, 0.05*self.fs_stage3, window.WIN_HAMMING, 6.76))
-        self.qtgui_time_sink_x_0_0_0.set_samp_rate(self.fs_stage3/2)
+        self.qtgui_time_sink_x_0_0_0.set_samp_rate(self.fs_stage3)
 
     def get_fc(self):
         return self.fc
