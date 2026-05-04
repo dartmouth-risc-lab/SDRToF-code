@@ -45,9 +45,8 @@ static std::string format_rate_tag(double sample_rate_sps) {
 }
 
 static std::string format_duration_tag(double tx_seconds) {
-    std::ostringstream oss;
-    oss << std::fixed << std::setprecision(1) << tx_seconds << "s";
-    return oss.str();
+    const auto rounded_seconds = static_cast<long long>(std::llround(tx_seconds));
+    return std::to_string(rounded_seconds) + "s";
 }
 
 static std::string build_run_tag(const app::FullDuplexRunConfig& cfg) {
@@ -56,6 +55,35 @@ static std::string build_run_tag(const app::FullDuplexRunConfig& cfg) {
         << "_Fb" << static_cast<int>(cfg.tx_tone_freq_hz / 1e3)
         << "_" << cfg.experiment_name;
     return oss.str();
+}
+
+static std::string last_path_component(const std::filesystem::path& path) {
+    for (auto it = path.end(); it != path.begin();) {
+        --it;
+        const std::string part = it->string();
+        if (!part.empty() && part != "/" && part != "." && part != "\\") {
+            return part;
+        }
+    }
+    return "";
+}
+
+static std::string manifest_file_ref(
+    const std::filesystem::path& output_dir,
+    const std::string& full_path
+) {
+    const auto normalized_output_dir = output_dir.lexically_normal();
+    const auto dir_name = last_path_component(normalized_output_dir);
+    const auto file_name = std::filesystem::path(full_path).filename().string();
+    if (dir_name.empty()) {
+        return file_name;
+    }
+    return dir_name + "/" + file_name;
+}
+
+static std::string manifest_dir_ref(const std::filesystem::path& output_dir) {
+    const auto normalized_output_dir = output_dir.lexically_normal();
+    return last_path_component(normalized_output_dir);
 }
 
 static std::string json_escape(const std::string& input) {
@@ -106,13 +134,14 @@ static void write_run_metadata_json(
     meta_file << "    \"finished_utc\": \"" << finished_utc << "\"\n";
     meta_file << "  },\n";
     meta_file << "  \"files\": {\n";
-    meta_file << "    \"iq_bin\": \"" << json_escape(iq_path) << "\",\n";
+    meta_file << "    \"directory\": \"" << json_escape(manifest_dir_ref(cfg.output_dir)) << "\",\n";
+    meta_file << "    \"iq_bin\": \"" << json_escape(manifest_file_ref(cfg.output_dir, iq_path)) << "\",\n";
     if (!rx_event_path.empty()) {
-        meta_file << "    \"rx_events_csv\": \"" << json_escape(rx_event_path) << "\",\n";
+        meta_file << "    \"rx_events_csv\": \"" << json_escape(manifest_file_ref(cfg.output_dir, rx_event_path)) << "\",\n";
     } else {
         meta_file << "    \"rx_events_csv\": null,\n";
     }
-    meta_file << "    \"metadata_json\": \"" << json_escape(path) << "\"\n";
+    meta_file << "    \"metadata_json\": \"" << json_escape(manifest_file_ref(cfg.output_dir, path)) << "\"\n";
     meta_file << "  },\n";
     meta_file << "  \"requested\": {\n";
     meta_file << "    \"sample_rate_sps\": " << cfg.sample_rate_sps << ",\n";
