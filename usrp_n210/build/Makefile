@@ -142,6 +142,19 @@ usrp_full_duplex/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex.dir/build.make CMakeFiles/usrp_full_duplex.dir/build
 .PHONY : usrp_full_duplex/fast
 
+#=============================================================================
+# Target rules for targets named usrp_full_duplex_prev
+
+# Build rule for target.
+usrp_full_duplex_prev: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 usrp_full_duplex_prev
+.PHONY : usrp_full_duplex_prev
+
+# fast build rule for target.
+usrp_full_duplex_prev/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex_prev.dir/build.make CMakeFiles/usrp_full_duplex_prev.dir/build
+.PHONY : usrp_full_duplex_prev/fast
+
 apps/usrp_full_duplex.o: apps/usrp_full_duplex.cpp.o
 .PHONY : apps/usrp_full_duplex.o
 
@@ -165,6 +178,30 @@ apps/usrp_full_duplex.s: apps/usrp_full_duplex.cpp.s
 apps/usrp_full_duplex.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex.dir/build.make CMakeFiles/usrp_full_duplex.dir/apps/usrp_full_duplex.cpp.s
 .PHONY : apps/usrp_full_duplex.cpp.s
+
+apps/usrp_full_duplex_prev.o: apps/usrp_full_duplex_prev.cpp.o
+.PHONY : apps/usrp_full_duplex_prev.o
+
+# target to build an object file
+apps/usrp_full_duplex_prev.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex_prev.dir/build.make CMakeFiles/usrp_full_duplex_prev.dir/apps/usrp_full_duplex_prev.cpp.o
+.PHONY : apps/usrp_full_duplex_prev.cpp.o
+
+apps/usrp_full_duplex_prev.i: apps/usrp_full_duplex_prev.cpp.i
+.PHONY : apps/usrp_full_duplex_prev.i
+
+# target to preprocess a source file
+apps/usrp_full_duplex_prev.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex_prev.dir/build.make CMakeFiles/usrp_full_duplex_prev.dir/apps/usrp_full_duplex_prev.cpp.i
+.PHONY : apps/usrp_full_duplex_prev.cpp.i
+
+apps/usrp_full_duplex_prev.s: apps/usrp_full_duplex_prev.cpp.s
+.PHONY : apps/usrp_full_duplex_prev.s
+
+# target to generate assembly for a file
+apps/usrp_full_duplex_prev.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex_prev.dir/build.make CMakeFiles/usrp_full_duplex_prev.dir/apps/usrp_full_duplex_prev.cpp.s
+.PHONY : apps/usrp_full_duplex_prev.cpp.s
 
 src/usrp/device.o: src/usrp/device.cpp.o
 .PHONY : src/usrp/device.o
@@ -248,9 +285,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... usrp_core"
 	@echo "... usrp_full_duplex"
+	@echo "... usrp_full_duplex_prev"
 	@echo "... apps/usrp_full_duplex.o"
 	@echo "... apps/usrp_full_duplex.i"
 	@echo "... apps/usrp_full_duplex.s"
+	@echo "... apps/usrp_full_duplex_prev.o"
+	@echo "... apps/usrp_full_duplex_prev.i"
+	@echo "... apps/usrp_full_duplex_prev.s"
 	@echo "... src/usrp/device.o"
 	@echo "... src/usrp/device.i"
 	@echo "... src/usrp/device.s"

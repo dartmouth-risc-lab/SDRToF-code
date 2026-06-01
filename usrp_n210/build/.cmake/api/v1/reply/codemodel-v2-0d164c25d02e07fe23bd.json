@@ -16,7 +16,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -32,7 +33,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -48,8 +50,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "usrp_full_duplex::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-usrp_full_duplex-Debug-a21f887658e791cb9866.json",
+					"jsonFile" : "target-usrp_full_duplex-Debug-4fd73aaed5d96007d1c7.json",
 					"name" : "usrp_full_duplex",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "usrp_full_duplex_prev::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-usrp_full_duplex_prev-Debug-e133d7876679716e237a.json",
+					"name" : "usrp_full_duplex_prev",
 					"projectIndex" : 0
 				}
 			]

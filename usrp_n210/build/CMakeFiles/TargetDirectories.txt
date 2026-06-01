@@ -1,4 +1,5 @@
 /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles/usrp_core.dir
 /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles/usrp_full_duplex.dir
+/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles/usrp_full_duplex_prev.dir
 /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles/edit_cache.dir
 /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles/rebuild_cache.dir

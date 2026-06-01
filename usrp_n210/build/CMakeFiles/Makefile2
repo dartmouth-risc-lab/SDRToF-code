@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = /home/risc/ram/USRP/usrp_software/usrp_n210/build
 # The main recursive "all" target.
 all: CMakeFiles/usrp_core.dir/all
 all: CMakeFiles/usrp_full_duplex.dir/all
+all: CMakeFiles/usrp_full_duplex_prev.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,6 +75,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/usrp_core.dir/clean
 clean: CMakeFiles/usrp_full_duplex.dir/clean
+clean: CMakeFiles/usrp_full_duplex_prev.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -127,6 +129,32 @@ usrp_full_duplex: CMakeFiles/usrp_full_duplex.dir/rule
 CMakeFiles/usrp_full_duplex.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex.dir/build.make CMakeFiles/usrp_full_duplex.dir/clean
 .PHONY : CMakeFiles/usrp_full_duplex.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/usrp_full_duplex_prev.dir
+
+# All Build rule for target.
+CMakeFiles/usrp_full_duplex_prev.dir/all: CMakeFiles/usrp_core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex_prev.dir/build.make CMakeFiles/usrp_full_duplex_prev.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex_prev.dir/build.make CMakeFiles/usrp_full_duplex_prev.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles --progress-num=7,8 "Built target usrp_full_duplex_prev"
+.PHONY : CMakeFiles/usrp_full_duplex_prev.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/usrp_full_duplex_prev.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/usrp_full_duplex_prev.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/risc/ram/USRP/usrp_software/usrp_n210/build/CMakeFiles 0
+.PHONY : CMakeFiles/usrp_full_duplex_prev.dir/rule
+
+# Convenience name for target.
+usrp_full_duplex_prev: CMakeFiles/usrp_full_duplex_prev.dir/rule
+.PHONY : usrp_full_duplex_prev
+
+# clean rule for target.
+CMakeFiles/usrp_full_duplex_prev.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/usrp_full_duplex_prev.dir/build.make CMakeFiles/usrp_full_duplex_prev.dir/clean
+.PHONY : CMakeFiles/usrp_full_duplex_prev.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

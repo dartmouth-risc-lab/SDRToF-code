@@ -18,5 +18,10 @@
   "directory": "/home/risc/ram/USRP/usrp_software/usrp_n210/build",
   "command": "/usr/bin/g++  -I/home/risc/ram/USRP/usrp_software/usrp_n210/include -g -std=gnu++17 -o CMakeFiles/usrp_full_duplex.dir/apps/usrp_full_duplex.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/apps/usrp_full_duplex.cpp",
   "file": "/home/risc/ram/USRP/usrp_software/usrp_n210/apps/usrp_full_duplex.cpp"
+},
+{
+  "directory": "/home/risc/ram/USRP/usrp_software/usrp_n210/build",
+  "command": "/usr/bin/g++  -I/home/risc/ram/USRP/usrp_software/usrp_n210/include -g -std=gnu++17 -o CMakeFiles/usrp_full_duplex_prev.dir/apps/usrp_full_duplex_prev.cpp.o -c /home/risc/ram/USRP/usrp_software/usrp_n210/apps/usrp_full_duplex_prev.cpp",
+  "file": "/home/risc/ram/USRP/usrp_software/usrp_n210/apps/usrp_full_duplex_prev.cpp"
 }
 ]

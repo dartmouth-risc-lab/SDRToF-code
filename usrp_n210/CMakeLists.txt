@@ -30,4 +30,6 @@ target_link_libraries(usrp_core PUBLIC
 #target_link_libraries(tx_tone PRIVATE usrp_core)
 
 add_executable(usrp_full_duplex apps/usrp_full_duplex.cpp)
+add_executable(usrp_full_duplex_prev apps/usrp_full_duplex_prev.cpp)
 target_link_libraries(usrp_full_duplex PRIVATE usrp_core)
+target_link_libraries(usrp_full_duplex_prev PRIVATE usrp_core)

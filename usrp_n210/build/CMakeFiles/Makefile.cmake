@@ -46,4 +46,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/usrp_core.dir/DependInfo.cmake"
   "CMakeFiles/usrp_full_duplex.dir/DependInfo.cmake"
+  "CMakeFiles/usrp_full_duplex_prev.dir/DependInfo.cmake"
   )

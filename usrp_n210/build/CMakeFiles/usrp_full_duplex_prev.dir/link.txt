@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/usrp_full_duplex_prev.dir/apps/usrp_full_duplex_prev.cpp.o -o usrp_full_duplex_prev  -Wl,-rpath,/usr/local/lib libusrp_core.a /usr/local/lib/libuhd.so 

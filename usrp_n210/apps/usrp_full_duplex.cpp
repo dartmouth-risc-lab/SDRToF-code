@@ -68,12 +68,41 @@ static std::string last_path_component(const std::filesystem::path& path) {
     return "";
 }
 
+static std::filesystem::path output_dir_manifest_ref(const std::filesystem::path& output_dir) {
+    const auto normalized_output_dir = output_dir.lexically_normal();
+    std::filesystem::path server_mount_relative;
+    bool after_server_mount = false;
+
+    for (const auto& part_path : normalized_output_dir) {
+        const std::string part = part_path.string();
+        if (part.empty() || part == "/" || part == "." || part == "\\") {
+            continue;
+        }
+        if (part == "server_mount") {
+            server_mount_relative.clear();
+            after_server_mount = true;
+            continue;
+        }
+        if (after_server_mount) {
+            server_mount_relative /= part_path;
+        }
+    }
+
+    if (!server_mount_relative.empty()) {
+        return server_mount_relative;
+    }
+    if (normalized_output_dir.is_relative()) {
+        return normalized_output_dir;
+    }
+
+    return last_path_component(normalized_output_dir);
+}
+
 static std::string manifest_file_ref(
     const std::filesystem::path& output_dir,
     const std::string& full_path
 ) {
-    const auto normalized_output_dir = output_dir.lexically_normal();
-    const auto dir_name = last_path_component(normalized_output_dir);
+    const auto dir_name = output_dir_manifest_ref(output_dir).generic_string();
     const auto file_name = std::filesystem::path(full_path).filename().string();
     if (dir_name.empty()) {
         return file_name;
@@ -82,8 +111,7 @@ static std::string manifest_file_ref(
 }
 
 static std::string manifest_dir_ref(const std::filesystem::path& output_dir) {
-    const auto normalized_output_dir = output_dir.lexically_normal();
-    return last_path_component(normalized_output_dir);
+    return output_dir_manifest_ref(output_dir).generic_string();
 }
 
 static std::string json_escape(const std::string& input) {
