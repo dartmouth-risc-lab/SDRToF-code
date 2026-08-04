@@ -9,18 +9,18 @@ namespace app {
 
 struct FullDuplexRunConfig {
     // Experiment labeling and output
-    std::filesystem::path output_dir = "/home/risc/ram/server_mount/May11/vgroove/";
-    std::string experiment_name = "300mv_20hz"; // any label you want in filenames
+    std::filesystem::path output_dir = "/home/risc/ram/server_mount/Aug3/tests/";
+    std::string experiment_name = "resurrection"; // any label you want in filenames
 
     // RF / waveform
-    double sample_rate_sps = 10e6;   
+    double sample_rate_sps = 5e6;   
     double tx_center_freq_hz = 900e6;
     double rx_center_freq_hz = 900e6;
     double tx_tone_freq_hz = 10e3;
     double tx_amplitude = 0.5;
 
     // Timing
-    double tx_seconds = 10.0;
+    double tx_seconds = 5.0;
     double rx_extra_seconds = 0.5;
     double settle_seconds = 0.02;
 

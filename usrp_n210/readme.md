@@ -30,6 +30,11 @@ make
 ```bash
 sudo make install
 ```
+### Run
+```bash
+make -j && ./usrp_full_duplex
+```
+
 
 ## Dependencies Installation
 

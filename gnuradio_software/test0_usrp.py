@@ -6,20 +6,11 @@
 #
 # GNU Radio Python Flow Graph
 # Title: USRP loopback
-# GNU Radio version: 3.9.8.0
+# GNU Radio version: 3.10.7.0
 
-from distutils.version import StrictVersion
-
-if __name__ == '__main__':
-    import ctypes
-    import sys
-    if sys.platform.startswith('linux'):
-        try:
-            x11 = ctypes.cdll.LoadLibrary('libX11.so')
-            x11.XInitThreads()
-        except:
-            print("Warning: failed to XInitThreads()")
-
+from packaging.version import Version as StrictVersion
+from PyQt5 import Qt
+from gnuradio import qtgui
 from PyQt5 import Qt
 from gnuradio import qtgui
 from gnuradio.filter import firdes
@@ -39,8 +30,6 @@ import time
 
 
 
-from gnuradio import qtgui
-
 class test0_usrp(gr.top_block, Qt.QWidget):
 
     def __init__(self):
@@ -50,8 +39,8 @@ class test0_usrp(gr.top_block, Qt.QWidget):
         qtgui.util.check_set_qss()
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
-        except:
-            pass
+        except BaseException as exc:
+            print(f"Qt GUI: Could not set Icon: {str(exc)}", file=sys.stderr)
         self.top_scroll_layout = Qt.QVBoxLayout()
         self.setLayout(self.top_scroll_layout)
         self.top_scroll = Qt.QScrollArea()
@@ -71,13 +60,13 @@ class test0_usrp(gr.top_block, Qt.QWidget):
                 self.restoreGeometry(self.settings.value("geometry").toByteArray())
             else:
                 self.restoreGeometry(self.settings.value("geometry"))
-        except:
-            pass
+        except BaseException as exc:
+            print(f"Qt GUI: Could not restore geometry: {str(exc)}", file=sys.stderr)
 
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 5e6
+        self.samp_rate = samp_rate = 2e6
         self.factors = factors = [8,4,2]
         self.fs_stage1 = fs_stage1 = samp_rate/factors[0]
         self.fs_stage2 = fs_stage2 = fs_stage1/factors[1]
@@ -89,8 +78,9 @@ class test0_usrp(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+
         self.uhd_usrp_source_0 = uhd.usrp_source(
-            ",".join(('addr=192.168.10.2', '')),
+            ",".join(('addr=192.168.10.3', '')),
             uhd.stream_args(
                 cpu_format="fc32",
                 args='',
@@ -104,7 +94,7 @@ class test0_usrp(gr.top_block, Qt.QWidget):
         self.uhd_usrp_source_0.set_antenna("RX2", 0)
         self.uhd_usrp_source_0.set_gain(10, 0)
         self.uhd_usrp_sink_0 = uhd.usrp_sink(
-            ",".join(('addr=192.168.10.2', '')),
+            ",".join(('addr=192.168.10.3', '')),
             uhd.stream_args(
                 cpu_format="fc32",
                 args='',
@@ -207,8 +197,8 @@ class test0_usrp(gr.top_block, Qt.QWidget):
             firdes.low_pass(
                 1,
                 fs_stage2,
-                0.4*fs_stage3,
-                0.05*fs_stage3,
+                (0.4*fs_stage3),
+                (0.05*fs_stage3),
                 window.WIN_HAMMING,
                 6.76))
         self.low_pass_filter_0_1_0 = filter.fir_filter_ccf(
@@ -216,8 +206,8 @@ class test0_usrp(gr.top_block, Qt.QWidget):
             firdes.low_pass(
                 1,
                 fs_stage1,
-                0.5*fs_stage2,
-                0.1*fs_stage2,
+                (0.5*fs_stage2),
+                (0.1*fs_stage2),
                 window.WIN_HAMMING,
                 6.76))
         self.low_pass_filter_0_1 = filter.fir_filter_ccf(
@@ -225,8 +215,8 @@ class test0_usrp(gr.top_block, Qt.QWidget):
             firdes.low_pass(
                 1,
                 samp_rate,
-                0.5*fs_stage1,
-                0.1*fs_stage1,
+                (0.5*fs_stage1),
+                (0.1*fs_stage1),
                 window.WIN_HAMMING,
                 6.76))
         self.low_pass_filter_0_0_0_0_0 = filter.fir_filter_ccf(
@@ -273,7 +263,7 @@ class test0_usrp(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate
         self.set_fs_stage1(self.samp_rate/self.factors[0])
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
-        self.low_pass_filter_0_1.set_taps(firdes.low_pass(1, self.samp_rate, 0.5*self.fs_stage1, 0.1*self.fs_stage1, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1.set_taps(firdes.low_pass(1, self.samp_rate, (0.5*self.fs_stage1), (0.1*self.fs_stage1), window.WIN_HAMMING, 6.76))
         self.uhd_usrp_sink_0.set_samp_rate(self.samp_rate)
         self.uhd_usrp_source_0.set_samp_rate(self.samp_rate)
 
@@ -292,8 +282,8 @@ class test0_usrp(gr.top_block, Qt.QWidget):
     def set_fs_stage1(self, fs_stage1):
         self.fs_stage1 = fs_stage1
         self.set_fs_stage2(self.fs_stage1/self.factors[1])
-        self.low_pass_filter_0_1.set_taps(firdes.low_pass(1, self.samp_rate, 0.5*self.fs_stage1, 0.1*self.fs_stage1, window.WIN_HAMMING, 6.76))
-        self.low_pass_filter_0_1_0.set_taps(firdes.low_pass(1, self.fs_stage1, 0.5*self.fs_stage2, 0.1*self.fs_stage2, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1.set_taps(firdes.low_pass(1, self.samp_rate, (0.5*self.fs_stage1), (0.1*self.fs_stage1), window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1_0.set_taps(firdes.low_pass(1, self.fs_stage1, (0.5*self.fs_stage2), (0.1*self.fs_stage2), window.WIN_HAMMING, 6.76))
 
     def get_fs_stage2(self):
         return self.fs_stage2
@@ -301,17 +291,17 @@ class test0_usrp(gr.top_block, Qt.QWidget):
     def set_fs_stage2(self, fs_stage2):
         self.fs_stage2 = fs_stage2
         self.set_fs_stage3(self.fs_stage2/self.factors[2])
-        self.low_pass_filter_0_1_0.set_taps(firdes.low_pass(1, self.fs_stage1, 0.5*self.fs_stage2, 0.1*self.fs_stage2, window.WIN_HAMMING, 6.76))
-        self.low_pass_filter_0_1_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, 0.4*self.fs_stage3, 0.05*self.fs_stage3, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1_0.set_taps(firdes.low_pass(1, self.fs_stage1, (0.5*self.fs_stage2), (0.1*self.fs_stage2), window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, (0.4*self.fs_stage3), (0.05*self.fs_stage3), window.WIN_HAMMING, 6.76))
 
     def get_fs_stage3(self):
         return self.fs_stage3
 
     def set_fs_stage3(self, fs_stage3):
         self.fs_stage3 = fs_stage3
-        self.high_pass_filter_0.set_taps(firdes.high_pass(1, self.fs_stage3/2, 30, 60, window.WIN_HANN, 6.76))
+        self.high_pass_filter_0.set_taps(firdes.high_pass(1, (self.fs_stage3/2), 30, 60, window.WIN_HANN, 6.76))
         self.low_pass_filter_0_0_0_0_0.set_taps(firdes.low_pass(4, self.fs_stage3, 7000, 2000, window.WIN_HAMMING, 6.76))
-        self.low_pass_filter_0_1_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, 0.4*self.fs_stage3, 0.05*self.fs_stage3, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_1_0_0.set_taps(firdes.low_pass(1, self.fs_stage2, (0.4*self.fs_stage3), (0.05*self.fs_stage3), window.WIN_HAMMING, 6.76))
         self.qtgui_time_sink_x_0_0_0.set_samp_rate(self.fs_stage3)
 
     def get_fc(self):
