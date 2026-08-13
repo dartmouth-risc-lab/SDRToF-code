@@ -9,8 +9,8 @@ namespace app {
 
 struct FullDuplexRunConfig {
     // Experiment labeling and output
-    std::filesystem::path output_dir = "/home/risc/ram/server_mount/Aug11/tests/";
-    std::string experiment_name = "shutter_10hz_0v15v_sine_500hz_re2"; // any label you want in filenames
+    std::filesystem::path output_dir = "/home/risc/ram/server_mount/Aug13/2dgalvo/";
+    std::string experiment_name = "knifeEdge_1hz_100hz_2v_5v_iter2"; // any label you want in filenames
 
     // RF / waveform
     double sample_rate_sps = 10e6;   
