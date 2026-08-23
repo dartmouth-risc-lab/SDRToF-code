@@ -142,6 +142,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: complex
     waveform: analog.GR_SIN_WAVE
   states:
@@ -166,6 +167,23 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [2416, 236.0]
+    rotation: 0
+    state: disabled
+- name: audio_sink_1
+  id: audio_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    device_name: ''
+    num_inputs: '1'
+    ok_to_block: 'True'
+    samp_rate: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [2520, 372.0]
     rotation: 0
     state: disabled
 - name: blocks_complex_to_arg_0
@@ -199,7 +217,7 @@ blocks:
     bus_structure: null
     coordinate: [1776, 360.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_complex_to_float_0
   id: blocks_complex_to_float
   parameters:
@@ -231,7 +249,7 @@ blocks:
     bus_structure: null
     coordinate: [1640, 568.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_multiply_conjugate_cc_1
   id: blocks_multiply_conjugate_cc
   parameters:
@@ -254,7 +272,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    length: '64'
+    length: '128'
     long_form: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -265,7 +283,7 @@ blocks:
     bus_structure: null
     coordinate: [1976, 332.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: epy_block_0
   id: epy_block
   parameters:
@@ -1171,7 +1189,7 @@ blocks:
     bus_structure: null
     coordinate: [2144, 436.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: qtgui_time_sink_x_0_0_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -1268,7 +1286,7 @@ blocks:
     bus_structure: null
     coordinate: [1872, 572.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_time_sink_x_0_0_1
   id: qtgui_time_sink_x
   parameters:
@@ -1424,9 +1442,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [2168, 316.0]
+    coordinate: [2152, 324.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: qtgui_waterfall_sink_x_0_0
   id: qtgui_waterfall_sink_x
   parameters:
@@ -1548,7 +1566,7 @@ blocks:
     bus_structure: null
     coordinate: [1848, 468.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: rational_resampler_xxx_0
   id: rational_resampler_xxx
   parameters:
@@ -1587,6 +1605,26 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [2192, 36.0]
+    rotation: 0
+    state: disabled
+- name: rational_resampler_xxx_1
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '125'
+    fbw: '0'
+    interp: '384'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: '[]'
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [2352, 276.0]
     rotation: 0
     state: disabled
 - name: uhd_usrp_sink_0
@@ -2312,6 +2350,7 @@ connections:
 - [blocks_complex_to_arg_0_0, '0', dc_blocker_xx_0, '0']
 - [blocks_complex_to_arg_0_0, '0', low_pass_filter_0_0_0_0_0_0, '0']
 - [blocks_complex_to_arg_0_0, '0', qtgui_time_sink_x_0_0_0, '0']
+- [blocks_complex_to_arg_0_0, '0', rational_resampler_xxx_1, '0']
 - [blocks_complex_to_float_0, '0', qtgui_freq_sink_x_0_0, '0']
 - [blocks_complex_to_mag_0, '0', qtgui_time_sink_x_0_0_0_0, '0']
 - [blocks_complex_to_mag_0, '0', qtgui_waterfall_sink_x_0_1, '0']
@@ -2333,6 +2372,7 @@ connections:
 - [low_pass_filter_0_1_0_0, '0', low_pass_filter_0_0_0_0_0, '0']
 - [rational_resampler_xxx_0, '0', audio_sink_0, '0']
 - [rational_resampler_xxx_0, '0', epy_block_0, '0']
+- [rational_resampler_xxx_1, '0', audio_sink_1, '0']
 - [uhd_usrp_source_0, '0', blocks_complex_to_float_0, '0']
 - [uhd_usrp_source_0, '0', blocks_multiply_conjugate_cc_1, '1']
 - [uhd_usrp_source_0, '0', qtgui_const_sink_x_0, '0']
@@ -2340,4 +2380,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.7.0
+  grc_version: 3.10.12.0

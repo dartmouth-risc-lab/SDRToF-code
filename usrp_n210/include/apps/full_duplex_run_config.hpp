@@ -9,8 +9,8 @@ namespace app {
 
 struct FullDuplexRunConfig {
     // Experiment labeling and output
-    std::filesystem::path output_dir = "/home/risc/ram/server_mount/Aug13/2dgalvo/";
-    std::string experiment_name = "knifeEdge_1hz_100hz_2v_5v_iter2"; // any label you want in filenames
+    std::filesystem::path output_dir = "/home/risc/ram/server_mount/Aug20/2dgalvo/"  ;
+    std::string experiment_name = "100hz_1hz_05v_05v_iter1"; // any label you want in filenames
 
     // RF / waveform
     double sample_rate_sps = 10e6;   
@@ -42,7 +42,7 @@ struct FullDuplexRunConfig {
         [14.0, 6.0] for RF loopback test with Tx/Rx shorted together (use low Tx gain to avoid damaging the front-end); w/ 30 db attenuator
         [30.0, 8.0]
         */
-    double tx_gain_db = 24.0; // 42.0 for non-retroreflective galvo with attenuator (IQ mag is bad but protects the RF front-end); 28.0 for retroreflective targets; adjust as needed
+    double tx_gain_db = 32.0; // 42.0 for non-retroreflective galvo with attenuator (IQ mag is bad but protects the RF front-end); 28.0 for retroreflective targets; adjust as needed
     std::string tx_ant = "TX/RX";
     double rx_gain_db = 8.0;
     std::string rx_ant = "RX2";
